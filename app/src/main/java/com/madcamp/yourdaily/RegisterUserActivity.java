@@ -47,7 +47,7 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isEmpty()) {
-                    Toast.makeText(RegisterUserActivity.this, "Must fill in all information", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUserActivity.this, "You must fill out all the fields", Toast.LENGTH_LONG).show();
                     return;
                 }
                 mAuth.createUserWithEmailAndPassword(emailTextView.getText().toString(), passwordTextView.getText().toString())
