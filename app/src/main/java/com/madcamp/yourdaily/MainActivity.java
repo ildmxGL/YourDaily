@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        ArrayList<Uri> imgURLs = new ArrayList<>();
+        final ArrayList<Uri> imgURLs = new ArrayList<>();
         imgURLs.add(Uri.parse("https://static.starcraft.com/images/content/share/share-1200x630-ca2d9035c74f9bb10faf142c83f76b47c909d6bbb177522676428d590c92ac16c99a92d1aea0afd4bbbd269e88b4341c4840d183d5555504f305c5a2a484469a.jpg"));
         imgURLs.add(Uri.parse("http://kr.blizzard.com/static/_images/games/sc/wallpapers/wall2/wall2-1920x1200.jpg"));
         imgURLs.add(Uri.parse("https://upload.wikimedia.org/wikipedia/ko/6/6f/%EC%8A%A4%ED%83%80%ED%81%AC%EB%9E%98%ED%94%84%ED%8A%B8_%EC%9E%90%EC%BC%93.jpg"));
@@ -73,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); return;
         }
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(MainActivity.this, ViewDaily.class);
+                myIntent.putExtra("Uri", imgURLs.get(position).toString());
+                startActivity(myIntent);
+            }
+        });
 
         //Show Logged in Email
         //testText.setText(mAuth.getCurrentUser().getEmail());
