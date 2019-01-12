@@ -31,12 +31,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import org.w3c.dom.Text;
 
 public class UserLoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private EditText mEmail;
     private EditText mPassword;
+
+    private static final int NUM_GRID_COLUMNS = 3;
 
     private Button mSignIn_btn;
     private TextView mRegister_btn;
@@ -219,5 +220,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
         Log.d(TAG, "onConnectionFailed: connect failed.");
 
     }
+
+
 
 }
