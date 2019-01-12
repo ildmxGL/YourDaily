@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "238324234194",
+    "firebase_url": "https://your-daily.firebaseio.com",
+    "project_id": "your-daily",
+    "storage_bucket": "your-daily.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238324234194:android:75547dc741a015c7",
+        "android_client_info": {
+          "package_name": "com.madcamp.yourdaily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238324234194-ccogpse4cstheatuvm83qqdt3rup7ni5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.madcamp.yourdaily",
+            "certificate_hash": "12ad24366332eb6c26a0c146c87c115b0091e219"
+          }
+        },
+        {
+          "client_id": "238324234194-onaiaifbqeta08919c52k2qpdguu5ckr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvej83DlPofGce7JRmhpqgySxum9edo9Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238324234194-onaiaifbqeta08919c52k2qpdguu5ckr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
