@@ -9,51 +9,45 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <!-- top toolbar -->
+
+        <!-- Top Toolbar -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/relLayout1">
 
-
-
+            <include layout="@layout/snippet_top_searchbar"/>
         </RelativeLayout>
 
-
         <!-- Middle Section -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/relLayout1"
-            android:id="@+id/relLayout2">
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:weightSum="2">
+            android:id="@+id/relLayout2"
+            android:padding="10dp"
+            android:background="@drawable/white_grey_border_bottom">
 
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/image_recycle1">
 
-                </android.support.v7.widget.RecyclerView>
+                <GridView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/gridView"
+                    android:gravity="center"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="auto_fit">
 
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/image_recycle2">
 
-                </android.support.v7.widget.RecyclerView>
 
-            </LinearLayout>
+                </GridView>
+
+
         </RelativeLayout>
-
-        <!-- bottom navigation -->
-        <include layout="@layout/bottom_navigation_view"/>
 
     </RelativeLayout>
 

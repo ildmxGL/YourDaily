@@ -11,8 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
 import android.widget.TextView;
 
+import com.etsy.android.grid.StaggeredGridView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -31,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Uri> sampleURIs;
 
-    private RecyclerView mRecycle1;
-    RecyclerView.LayoutManager mLayoutManager;
+
 
     //private TextView testText;
 
@@ -44,28 +45,27 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         //testText = (TextView)findViewById(R.id.testtxt);
 
-        mRecycle1 = (RecyclerView) findViewById(R.id.image_recycle1);
-        mRecycle1.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecycle1.setLayoutManager(mLayoutManager);
 
-        sampleURIs = new ArrayList<>();
 
-        sampleURIs.add(Uri.parse("https://file2.nocutnews.co.kr/newsroom/image/2018/11/03/20181103154544539681_0_750_1050.jpg"));
-        sampleURIs.add(Uri.parse("https://img.insight.co.kr/static/2018/07/24/700/524xml6u4y702kq18208.jpg"));
-        sampleURIs.add(Uri.parse("http://img.etoday.co.kr/pto_db/2018/02/20180207224139_1184559_600_819.jpg"));
-        sampleURIs.add(Uri.parse("https://t1.daumcdn.net/cfile/tistory/230D734057B6F3910B"));
-        sampleURIs.add(Uri.parse("https://img.huffingtonpost.com/asset/5ac0443f1e00003b137b0438.jpeg?cache=j2lK2hCwZ3&ops=scalefit_630_noupscale"));
-        sampleURIs.add(Uri.parse("http://img.etoday.co.kr/pto_db/2018/03/20180308141418_1193544_600_819.jpg"));
-        sampleURIs.add(Uri.parse("http://newsimg.hankookilbo.com/2017/07/14/201707140970054463_1.jpg"));
-        sampleURIs.add(Uri.parse("http://tenasia.hankyung.com/webwp_kr/wp-content/uploads/2015/09/2015091109232247445-540x360.jpg"));
-        sampleURIs.add(Uri.parse("http://image.chosun.com/sitedata/image/201808/10/2018081000670_0.jpg"));
-        sampleURIs.add(Uri.parse("https://i.pinimg.com/originals/4b/b5/48/4bb548cb205e2aa0373700506f183ef4.jpg"));
-        sampleURIs.add(Uri.parse("https://newsimg.sedaily.com/2017/11/16/1ONLOGFG8I_1.jpg"));
-        sampleURIs.add(Uri.parse("http://the-star.co.kr/site/data/img_dir/2017/11/16/2017111602664_0.jpg"));
+        ArrayList<Uri> imgURLs = new ArrayList<>();
+        imgURLs.add(Uri.parse("https://static.starcraft.com/images/content/share/share-1200x630-ca2d9035c74f9bb10faf142c83f76b47c909d6bbb177522676428d590c92ac16c99a92d1aea0afd4bbbd269e88b4341c4840d183d5555504f305c5a2a484469a.jpg"));
+        imgURLs.add(Uri.parse("http://kr.blizzard.com/static/_images/games/sc/wallpapers/wall2/wall2-1920x1200.jpg"));
+        imgURLs.add(Uri.parse("https://upload.wikimedia.org/wikipedia/ko/6/6f/%EC%8A%A4%ED%83%80%ED%81%AC%EB%9E%98%ED%94%84%ED%8A%B8_%EC%9E%90%EC%BC%93.jpg"));
+        imgURLs.add(Uri.parse("http://t1.daumcdn.net/liveboard/slidee/7dbe6c875ef341a39afaff7747409e27.jpeg"));
+        imgURLs.add(Uri.parse("https://kr.battle.net/forums/static/images/game-logos/game-logo-sc2.png"));
+        imgURLs.add(Uri.parse("http://bnetcmsus-a.akamaihd.net/cms/blog_header/w6/W68CINWEIMYA1522156038117.jpg"));
+        imgURLs.add(Uri.parse("http://www.bloter.net/wp-content/uploads/2017/11/starcraft2-free.jpg"));
+        imgURLs.add(Uri.parse("http://img.hani.co.kr/imgdb/resize/2007/0520/117958271733_20070520.JPG"));
+        imgURLs.add(Uri.parse("http://www.gameple.co.kr/news/photo/201708/138041_143500_2323.jpg"));
+        imgURLs.add(Uri.parse("http://img.tf.co.kr/article/home/2017/04/08/20176465149166656100.jpg"));
+        imgURLs.add(Uri.parse("http://www.gametoc.co.kr/news/photo/201708/44865_84462_739.jpg"));
+        imgURLs.add(Uri.parse("https://bnetcmsus-a.akamaihd.net/cms/blog_header/o8/O89EFI6EFU1D1542160918343.jpg"));
+        imgURLs.add(Uri.parse("https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/IgT/image/38YN-7Z5Dr5p6Uh8W75gXYZffQ0.jpg"));
+        imgURLs.add(Uri.parse("http://img.tf.co.kr/article/home/2017/01/02/20175065148336804000.jpg"));
 
-        ImageRecycleAdapter myAdapter = new ImageRecycleAdapter(sampleURIs);
-        mRecycle1.setAdapter(myAdapter);
+        GridView gridView = (GridView)findViewById(R.id.gridView);
+        GridAdapter myAdapter = new GridAdapter(this, imgURLs);
+        gridView.setAdapter(myAdapter);
 
         //Login Activity if not logged in
         if(mAuth.getCurrentUser()==null){

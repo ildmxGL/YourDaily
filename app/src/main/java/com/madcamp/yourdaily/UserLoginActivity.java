@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -28,10 +29,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
+
 public class UserLoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private EditText mEmail_editText;
     private EditText mPassword_editText;
+
+    private static final int NUM_GRID_COLUMNS = 3;
 
     private Button mSignIn_btn;
     private Button mRegister_btn;
@@ -55,7 +60,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
         mAuth = FirebaseAuth.getInstance();
 
         mEmail_editText = (EditText) findViewById(R.id.email_editText);
-        mPassword_editText = (EditText) findViewById(R.id.password_edtiText);
+        mPassword_editText = (EditText) findViewById(R.id.password_editText);
 
         mSignIn_btn = (Button)findViewById(R.id.signin_button);
         mRegister_btn = (Button)findViewById(R.id.register_button);
@@ -198,5 +203,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+
 
 }
