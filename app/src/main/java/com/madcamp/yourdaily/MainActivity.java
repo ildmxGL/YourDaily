@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private GridView gridView;
 
+
     //For swipe view
     private float x1,x2;
     static final int MIN_DISTANCE = 150;
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
 
 
 

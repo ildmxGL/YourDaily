@@ -1,11 +1,21 @@
 package com.madcamp.yourdaily;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -35,18 +45,42 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import java.util.List;
-
+import java.util.UUID;
 
 
 public class AddPreDaily extends AppCompatActivity {
-
+    private static final String TAG = "AddPreDaily";
     ImageView CenterImageView;
     Button UploadButton;
     private String ImageFilePath = "";
+    private Uri contentUri = null;
+    private String ImageName = "";
     //StorageReference storageRef = storage.getReference();
+
+    //Variables for making preDaily
+    private String ImageUri = "";
+    private String Hashtag = "";
+    private String Title = "";
+    private String UserEmail = "";
+    private String UserNick = "";
+
+    private String preHashtag = "";
+
+    //For sending Firebase a pic
+    private Uri filePath;
+    private final int PICK_IMAGE_REQUEST = 71;
+    //Firebase
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
+    private EditText titleEdit;
+    private EditText hashEdit;
+
+    private FirebaseAuth mAuth;
 
     private static final String IMAGE_DIRECTORY = "/demonuts";
     private int GALLERY = 1, CAMERA = 2;
@@ -58,7 +92,14 @@ public class AddPreDaily extends AppCompatActivity {
         requestMultiplePermissions();
         CenterImageView = (ImageView) findViewById(R.id.predaily_image);
         UploadButton = (Button) findViewById(R.id.upload_predaily);
+        titleEdit = (EditText) findViewById(R.id.title_edittext);
+        hashEdit = (EditText) findViewById(R.id.hashtag_edittext);
 
+        mAuth = FirebaseAuth.getInstance();
+        UserEmail = mAuth.getCurrentUser().getEmail();
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
         CenterImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,10 +110,19 @@ public class AddPreDaily extends AppCompatActivity {
         UploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 if(ImageFilePath.isEmpty()){
+                    Log.d(TAG, "onClick: Image is Empty");
                     Toast.makeText(AddPreDaily.this, "Image is Empty!", Toast.LENGTH_SHORT).show();
                     return;
-                }
+                }*/
+                Log.d(TAG, "onClick: Yeah Yeah");
+                Hashtag = hashEdit.getText().toString();
+                Title = titleEdit.getText().toString();
+
+                uploadImage();
+
+
 
             }
         });
@@ -127,6 +177,7 @@ public class AddPreDaily extends AppCompatActivity {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     String path = saveImage(bitmap);
+                    contentUri = contentURI;
                     //Toast.makeText(AddPreDaily.this, "Image Saved!", Toast.LENGTH_SHORT).show();
                     CenterImageView.setImageBitmap(bitmap);
 
@@ -138,6 +189,7 @@ public class AddPreDaily extends AppCompatActivity {
 
         } else if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            contentUri = getImageUri(AddPreDaily.this, thumbnail);
             CenterImageView.setImageBitmap(thumbnail);
             saveImage(thumbnail);
             //Toast.makeText(AddPreDaily.this, "Image Saved!", Toast.LENGTH_SHORT).show();
@@ -158,12 +210,12 @@ public class AddPreDaily extends AppCompatActivity {
             File f = new File(wallpaperDirectory, Calendar.getInstance()
                     .getTimeInMillis() + ".jpg");
             f.createNewFile();
-            FileOutputStream fo = new FileOutputStream(f);
-            fo.write(bytes.toByteArray());
-            MediaScannerConnection.scanFile(this,
-                    new String[]{f.getPath()},
-                    new String[]{"image/jpeg"}, null);
-            fo.close();
+            //FileOutputStream fo = new FileOutputStream(f);
+            //fo.write(bytes.toByteArray());
+            //MediaScannerConnection.scanFile(this,
+            //        new String[]{f.getPath()},
+            //        new String[]{"image/jpeg"}, null);
+            //fo.close();
             ImageFilePath = f.getAbsolutePath();
             Log.d("TAG", "File Saved::---&gt;" + f.getAbsolutePath());
 
@@ -210,6 +262,95 @@ public class AddPreDaily extends AppCompatActivity {
                 .check();
     }
 
+    private void uploadImage() {
+
+        if(contentUri != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+            Log.d(TAG, "uploadImage: ");
+
+            ImageName = UUID.randomUUID().toString();
+            final StorageReference ref = storageReference.child("images/"+ ImageName);
+            ref.putFile(contentUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddPreDaily.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "onSuccess: ImageName : "+ImageName);
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    ImageUri = uri.toString();
+                                    Hashtag = Hashtag.trim();
+                                    //String[] HashtagSplit = Hashtag.split("#");
+                                    //Hashtag = "";
+                                    //for (String hash : HashtagSplit){
+                                    //    Hashtag = Hashtag + ", " + hash;
+                                    //}
+
+                                    PreDaily preDaily = new PreDaily();
+                                    preDaily.setHashtag(Hashtag);
+                                    preDaily.setImageUri(ImageUri);
+                                    preDaily.setTitle(Title);
+                                    preDaily.setUserEmail(UserEmail);
+                                    preDaily.setUserNick(UserNick);
+                                    new FirebaseDatabasePreDaily().addPreDaily(preDaily, new FirebaseDatabasePreDaily.DataStatus() {
+                                        @Override
+                                        public void DataIsLoaded(List<PreDaily> preDailies, List<String> keys) {
+
+                                        }
+
+                                        @Override
+                                        public void DataIsInserted() {
+                                            Toast.makeText(AddPreDaily.this, "Accepted Successfully", Toast.LENGTH_LONG).show();
+                                        }
+
+                                        @Override
+                                        public void DataIsUpdated() {
+
+                                        }
+
+                                        @Override
+                                        public void DataIsDeleted() {
+
+                                        }
+                                    });
+
+                                    finish();
+
+                                }
+                            });
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddPreDaily.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "onFailure: ");
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
 
 
 
