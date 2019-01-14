@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupBottomNavigationView();
 
-        new FirebaseDatabaseDailyCard().readBooks(new FirebaseDatabaseDailyCard.DataStatus() {
+        new FirebaseDatabaseDailyCard().readBooks("", new FirebaseDatabaseDailyCard.DataStatus() {
             @Override
             public void DataIsLoaded(List<DailyCard> books, List<String> keyss) {
                 Log.d(TAG, "DataIsLoaded: data Import");

@@ -52,7 +52,7 @@
                 <GridView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/imCompleteDailies"
+                    android:id="@+id/gridPreDaily"
                     android:numColumns="2">
                 </GridView>
             </RelativeLayout>
@@ -65,7 +65,8 @@
             <GridView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:numColumns="3">
+                android:numColumns="3"
+                android:id="@+id/gridDaily">
             </GridView>
         </LinearLayout>
 

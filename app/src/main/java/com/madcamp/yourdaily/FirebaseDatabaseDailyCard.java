@@ -30,7 +30,7 @@ public class FirebaseDatabaseDailyCard {
         mReferenceBooks = mDatabase.getReference("DailyCard");
     }
 
-    public void readBooks(final DataStatus dataStatus){
+    public void readBooks(final String UserEmail, final DataStatus dataStatus){
         mReferenceBooks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -39,7 +39,11 @@ public class FirebaseDatabaseDailyCard {
                 for(DataSnapshot keyNode : dataSnapshot.getChildren()){
                     keys.add(keyNode.getKey());
                     DailyCard daily = keyNode.getValue(DailyCard.class);
-                    dailies.add(daily);
+                    if(UserEmail.isEmpty()) {
+                        dailies.add(daily);
+                    } else if (UserEmail.equals(daily.getUserEmail())){
+                        dailies.add(daily);
+                    }
                 }
                 dataStatus.DataIsLoaded(dailies, keys);
             }

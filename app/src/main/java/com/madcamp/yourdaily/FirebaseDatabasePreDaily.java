@@ -30,7 +30,7 @@ public class FirebaseDatabasePreDaily {
         mReferenceBooks = mDatabase.getReference("preDaily");
     }
 
-    public void readBooks(final DataStatus dataStatus){
+    public void readPreDaily(final String UserEmail, final DataStatus dataStatus){
         mReferenceBooks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -39,7 +39,11 @@ public class FirebaseDatabasePreDaily {
                 for(DataSnapshot keyNode : dataSnapshot.getChildren()){
                     keys.add(keyNode.getKey());
                     PreDaily preDaily = keyNode.getValue(PreDaily.class);
-                    preDailies.add(preDaily);
+                    if(UserEmail.isEmpty()) {
+                        preDailies.add(preDaily);
+                    } else if (UserEmail.equals(preDaily.getUserEmail())){
+                        preDailies.add(preDaily);
+                    }
                 }
                 dataStatus.DataIsLoaded(preDailies, keys);
             }
