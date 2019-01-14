@@ -30,6 +30,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
 
 public class UserLoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
@@ -51,7 +52,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
     private static final String TAG = "UserLoginActivity";
 
     private static final int RC_SIGN_IN = 1000;
-    SignInButton Google_Login;
+    private GoogleSignInButton Google_Login;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -68,6 +69,9 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
         mRegister_btn = (TextView)findViewById(R.id.register_button);
 
         mProgress_bar = (ProgressBar)findViewById(R.id.loading_progressBar);
+
+        Google_Login = (GoogleSignInButton) findViewById(R.id.google_login);
+
 
         init();
     }
@@ -125,8 +129,6 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
-
-        Google_Login = (SignInButton) findViewById(R.id.google_login);
 
         Google_Login.setOnClickListener(new View.OnClickListener() {
             @Override

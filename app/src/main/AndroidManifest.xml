@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +26,7 @@
         <activity android:name=".AddDailyActivity" />
         <activity android:name=".WriteDailyActivity" />
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

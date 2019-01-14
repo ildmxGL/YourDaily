@@ -63,6 +63,9 @@
 
             </RelativeLayout>
         </RelativeLayout>
+
     </ScrollView>
+
+    <include layout = "@layout/snippet_bottom_context" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -2,7 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +57,8 @@
             android:text="Sign in"
             android:id="@+id/signin_button"
             android:padding="12dp"
-            android:background="@drawable/white_rounded_button"/>
+            android:textAllCaps="false"
+            android:background="@drawable/white_rectangle_button" />
 
         <TextView
             android:layout_width="match_parent"
@@ -70,20 +73,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
 
-            <com.google.android.gms.common.SignInButton
-                android:layout_width="0dp"
+            <com.shobhitpuri.custombuttons.GoogleSignInButton
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/google_login">
-
-            </com.google.android.gms.common.SignInButton>
-
-            <com.google.android.gms.common.SignInButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-            </com.google.android.gms.common.SignInButton>
+                android:layout_centerInParent="true"
+                android:text="@string/google_sign_up"
+                app:isDarkTheme="true"
+                android:id="@+id/google_login"/>
 
         </LinearLayout>
 
