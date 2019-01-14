@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/ic_house"
+        android:id="@+id/ic_home"
         android:icon="@drawable/ic_home"
         android:title="">
 
     </item>
 
     <item
-        android:id="@+id/ic_search"
+        android:id="@+id/ic_plus"
         android:icon="@drawable/ic_plus"
         android:title="">
 
@@ -23,13 +23,11 @@
     </item>
 
     <item
-        android:id="@+id/ic_circle"
+        android:id="@+id/ic_profile"
         android:icon="@drawable/ic_profile"
         android:title="">
 
     </item>
-
-
 
 
 </menu>

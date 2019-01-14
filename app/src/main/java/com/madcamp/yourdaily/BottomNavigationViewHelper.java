@@ -14,7 +14,7 @@ public class BottomNavigationViewHelper {
 
     public static void setupBottomNavigationView(BottomNavigationViewEx bottomNavigationViewEx){
         Log.d(TAG, "Setting up bottimNavigationView");
-            bottomNavigationViewEx.enableAnimation(false);
+        bottomNavigationViewEx.enableAnimation(false);
         bottomNavigationViewEx.enableShiftingMode(false);
         bottomNavigationViewEx.enableItemShiftingMode(false);
         bottomNavigationViewEx.setTextVisibility(false);
@@ -25,23 +25,23 @@ public class BottomNavigationViewHelper {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
-                    case R.id.ic_house:
+                    case R.id.ic_home:
                         Intent intent1 = new Intent(context, MainActivity.class);//ACTIVITY_NUM = 0
                         context.startActivity(intent1);
                         break;
 
-                    case R.id.ic_search:
-                        Intent intent2 = new Intent(context, MainActivity.class);//ACTIVITY_NUM = 1
+                    case R.id.ic_plus:
+                        Intent intent2 = new Intent(context, AddDailyActivity.class);//ACTIVITY_NUM = 1
                         context.startActivity(intent2);
                         break;
 
                     case R.id.ic_write:
-                        Intent intent3 = new Intent(context, MainActivity.class);//ACTIVITY_NUM = 2
+                        Intent intent3 = new Intent(context, WriteDailyActivity.class);//ACTIVITY_NUM = 2
                         context.startActivity(intent3);
                         break;
 
-                    case R.id.ic_circle:
-                        Intent intent4 = new Intent(context, MainActivity.class);//ACTIVITY_NUM = 2
+                    case R.id.ic_profile:
+                        Intent intent4 = new Intent(context, ProfileActivity.class);//ACTIVITY_NUM = 3
                         context.startActivity(intent4);
                         break;
 

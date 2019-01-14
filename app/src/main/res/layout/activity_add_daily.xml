@@ -10,30 +10,50 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/relLayout1">
+
+            <include layout="@layout/snippet_top_searchbar"/>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:weightSum="5"
-            android:id="@id/LinLayout">
+            android:weightSum="7"
+            android:id="@id/LinLayout"
+            android:layout_below="@id/relLayout1">
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2">
-                <ImageButton
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/AddDailyButton"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true">
+                    <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/AddDailyButton"
+                    android:src="@drawable/daily_add"/>
+                </android.support.constraint.ConstraintLayout>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3">
+                android:layout_weight="5">
                 <GridView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/imCompleteDailies">
+                    android:id="@+id/imCompleteDailies"
+                    android:numColumns="2">
                 </GridView>
             </RelativeLayout>
         </LinearLayout>
@@ -44,12 +64,13 @@
             android:layout_below="@id/LinLayout">
             <GridView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:numColumns="3">
             </GridView>
         </LinearLayout>
+
+    <include layout = "@layout/bottom_navigation_view" />
     </RelativeLayout>
-
-
 
 
 </android.support.design.widget.CoordinatorLayout>

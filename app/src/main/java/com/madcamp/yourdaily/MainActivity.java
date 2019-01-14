@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private static final int ACTIVITY_NUM = 0;
-    private Context mContext;
+    private Context mContext = MainActivity.this;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<Uri> imgURLs = new ArrayList<>();
 
         gridView = (GridView)findViewById(R.id.gridView);
+
+        setupBottomNavigationView();
 
         new FirebaseDatabaseDailyCard().readBooks(new FirebaseDatabaseDailyCard.DataStatus() {
             @Override

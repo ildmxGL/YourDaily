@@ -123,7 +123,7 @@
             </RelativeLayout>
 
         </RelativeLayout>
-
+        <include layout = "@layout/bottom_navigation_view" />
     </RelativeLayout>
 
 
