@@ -3,6 +3,11 @@ package com.madcamp.yourdaily;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +19,6 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +28,9 @@ public class AddDailyActivity extends AppCompatActivity {
     private Context mContext = AddDailyActivity.this;
     private static final String TAG = "AddDailyActivity";
 
-    private ImageButton addImageButton;
+//    private ImageButton addImageButton;
     private ArrayList<PreDaily> preDailies;
-    private ArrayList<String> keys;
+//    private ArrayList<String> keys;
 
     private GridView preDailyView;
     private GridView DailyView;
@@ -41,26 +45,42 @@ public class AddDailyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_daily);
 
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        adapter.addFragment(new AddDailyCompleteFragment(), "Complete");
+        adapter.addFragment(new AddDailyNotYetFragment(), "Not yet");
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+
         setupBottomNavigationView();
 
         mAuth = FirebaseAuth.getInstance();
 
         preDailies = new ArrayList<>();
 
-        addImageButton = (ImageButton) findViewById(R.id.AddDailyButton);
+//        addImageButton = (ImageButton) findViewById(R.id.AddDailyButton);
+//
+//        preDailyView = (GridView) findViewById(R.id.gridPreDaily);
+//        DailyView = (GridView) findViewById(R.id.gridDaily);
 
-        preDailyView = (GridView) findViewById(R.id.gridPreDaily);
-        DailyView = (GridView) findViewById(R.id.gridDaily);
+//        addImageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent myIntent = new Intent(AddDailyActivity.this, AddPreDaily.class);
+//                startActivity(myIntent);
+//            }
+//        });
 
-        addImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(AddDailyActivity.this, AddPreDaily.class);
-                startActivity(myIntent);
-            }
-        });
+        init();
 
-        new FirebaseDatabasePreDaily().readPreDaily(new FirebaseDatabasePreDaily.DataStatus() {
+    }
+
+    private void init() {
+        new FirebaseDatabasePreDaily().readPreDaily(mAuth.getCurrentUser().getEmail(), new FirebaseDatabasePreDaily.DataStatus() {
             @Override
             public void DataIsLoaded(List<PreDaily> books, List<String> keyss) {
                 Log.d(TAG, "DataIsLoaded: data Import");
@@ -92,6 +112,39 @@ public class AddDailyActivity extends AppCompatActivity {
             }
         });
     }
+
+    // Adapter for the viewpager using FragmentPagerAdapter
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
+
+
 
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
