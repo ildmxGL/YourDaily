@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Password"
+                android:hint="Confirm Password"
                 android:id="@+id/input_password_check"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -95,7 +95,6 @@
             android:layout_marginTop="25dp"
             android:text="Register"
             android:id="@+id/btn_register"
-            android:paddingRight="12dp"
             android:background="@drawable/white_rounded_button"/>
 
     </LinearLayout>

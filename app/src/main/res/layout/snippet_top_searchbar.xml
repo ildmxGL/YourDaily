@@ -34,12 +34,13 @@
                     android:layout_marginStart="15dp"
                     android:id="@+id/profileName"
                     android:background="@android:color/transparent"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="5dp"
+                    android:layout_toLeftOf="@+id/profileMenu"/>
 
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"
                     android:layout_centerVertical="true"
                     android:id="@+id/profileMenu"

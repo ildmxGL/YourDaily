@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/google_sign_up"
+                android:text="Sign in with Google"
                 app:isDarkTheme="true"
                 android:id="@+id/google_login"/>
 
@@ -90,7 +90,7 @@
             android:layout_marginBottom="25dp"
             android:text="No account yet? Create one"
             android:gravity="center"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:id="@+id/register_button"
             android:textColor="@color/link_blue"/>
 

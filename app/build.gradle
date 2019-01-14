@@ -67,9 +67,12 @@ dependencies {
     implementation 'com.android.support:support-core-utils:28.0.0'
 
     //Staggered gridview
-    compile 'com.etsy.android.grid:library:1.0.5'
+    implementation 'com.etsy.android.grid:library:1.0.5'
 
+    // For custom google login button
+    implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
 
+    implementation 'com.karumi:dexter:5.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -18,6 +18,17 @@
 
             <include layout="@layout/snippet_top_searchbar"/>
         </RelativeLayout>
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/relLayout1"
+            android:layout_marginTop="8dp">
+
+        </android.support.v7.widget.Toolbar>
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"

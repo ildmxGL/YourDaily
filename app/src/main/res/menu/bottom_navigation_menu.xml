@@ -3,28 +3,28 @@
 
     <item
         android:id="@+id/ic_home"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_planet"
         android:title="">
 
     </item>
 
     <item
         android:id="@+id/ic_plus"
-        android:icon="@drawable/ic_plus"
+        android:icon="@drawable/ic_hash"
         android:title="">
 
     </item>
 
     <item
         android:id="@+id/ic_write"
-        android:icon="@drawable/ic_write"
+        android:icon="@drawable/ic_pencil"
         android:title="">
 
     </item>
 
     <item
         android:id="@+id/ic_profile"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_user"
         android:title="">
 
     </item>
