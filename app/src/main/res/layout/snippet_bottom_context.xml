@@ -1,0 +1,40 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomContext"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="72dp"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:paddingBottom="24dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="24dp"
+        android:background="@drawable/bg_bottom_context"
+        android:orientation="vertical">
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bar"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"/>
+
+        <include layout="@layout/snippet_info_context" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:id="@+id/text_context"
+            android:fontFamily="@font/thasadith_regular"
+            android:text="He left no time to regret\nKept his dick wet\nWith his same old safe bet\nMe and my head high\nAnd my tears dry\nGet on without my guy\nYou went back to what you knew\nSo far removed from all that we went through|nAnd I tread a troubled track\nMy odds are stacked\nI'll go back to black\n"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:lineHeight="25sp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</merge>
