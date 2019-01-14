@@ -69,8 +69,6 @@ dependencies {
     compile 'com.etsy.android.grid:library:1.0.5'
 
 
-
-
 }
 
 apply plugin: 'com.google.gms.google-services'

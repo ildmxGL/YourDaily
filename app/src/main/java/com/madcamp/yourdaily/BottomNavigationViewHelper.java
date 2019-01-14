@@ -14,11 +14,11 @@ public class BottomNavigationViewHelper {
 
     public static void setupBottomNavigationView(BottomNavigationViewEx bottomNavigationViewEx){
         Log.d(TAG, "Setting up bottimNavigationView");
-        bottomNavigationViewEx.enableAnimation(false);
+            bottomNavigationViewEx.enableAnimation(false);
         bottomNavigationViewEx.enableShiftingMode(false);
         bottomNavigationViewEx.enableItemShiftingMode(false);
         bottomNavigationViewEx.setTextVisibility(false);
-    };
+};
 
     public static void enableNavigation(final Context context, BottomNavigationViewEx view){
         view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -35,12 +35,15 @@ public class BottomNavigationViewHelper {
                         context.startActivity(intent2);
                         break;
 
-                    case R.id.ic_circle:
+                    case R.id.ic_write:
                         Intent intent3 = new Intent(context, MainActivity.class);//ACTIVITY_NUM = 2
                         context.startActivity(intent3);
                         break;
 
-
+                    case R.id.ic_circle:
+                        Intent intent4 = new Intent(context, MainActivity.class);//ACTIVITY_NUM = 2
+                        context.startActivity(intent4);
+                        break;
 
                 }
 

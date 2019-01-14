@@ -1,60 +1,73 @@
 package com.madcamp.yourdaily;
 
 public class DailyCard {
-    private String uri;
-    private String title;
-    private String userEmail;
-    private String userNick;
-    private String writerEmail;
-    private String writerNick;
+    private String ImageUri;
+    private String Title;
+    private String UserEmail;
+    private String UserNick;
+    private String WriterEmail;
+    private String WriterNick;
     private String Content;
 
-    public String getUri() {
-        return uri;
+    public DailyCard() {
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public DailyCard(String imageUri, String title, String userEmail, String userNick, String writerEmail, String writerNick, String content) {
+        ImageUri = imageUri;
+        Title = title;
+        UserEmail = userEmail;
+        UserNick = userNick;
+        WriterEmail = writerEmail;
+        WriterNick = writerNick;
+        Content = content;
+    }
+
+    public String getImageUri() {
+        return ImageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        ImageUri = imageUri;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getUserEmail() {
-        return userEmail;
+        return UserEmail;
     }
 
     public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+        UserEmail = userEmail;
     }
 
     public String getUserNick() {
-        return userNick;
+        return UserNick;
     }
 
     public void setUserNick(String userNick) {
-        this.userNick = userNick;
+        UserNick = userNick;
     }
 
     public String getWriterEmail() {
-        return writerEmail;
+        return WriterEmail;
     }
 
     public void setWriterEmail(String writerEmail) {
-        this.writerEmail = writerEmail;
+        WriterEmail = writerEmail;
     }
 
     public String getWriterNick() {
-        return writerNick;
+        return WriterNick;
     }
 
     public void setWriterNick(String writerNick) {
-        this.writerNick = writerNick;
+        WriterNick = writerNick;
     }
 
     public String getContent() {
@@ -62,16 +75,6 @@ public class DailyCard {
     }
 
     public void setContent(String content) {
-        Content = content;
-    }
-
-    public DailyCard(String uri, String title, String userEmail, String userNick, String writerEmail, String writerNick, String content) {
-        this.uri = uri;
-        this.title = title;
-        this.userEmail = userEmail;
-        this.userNick = userNick;
-        this.writerEmail = writerEmail;
-        this.writerNick = writerNick;
         Content = content;
     }
 }

@@ -3,11 +3,12 @@
     package="com.madcamp.yourdaily">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".MyApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -20,7 +21,11 @@
         </activity>
         <activity android:name=".LoginChooseActivity" />
         <activity android:name=".UserLoginActivity" />
-        <activity android:name=".RegisterUserActivity"></activity>
+        <activity android:name=".RegisterUserActivity" />
+        <activity android:name=".ViewDaily" />
+        <activity android:name=".AddDailyActivity" />
+        <activity android:name=".WriteDailyActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

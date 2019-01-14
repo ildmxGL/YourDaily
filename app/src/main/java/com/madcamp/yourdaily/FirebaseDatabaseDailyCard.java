@@ -27,7 +27,7 @@ public class FirebaseDatabaseDailyCard {
 
     public FirebaseDatabaseDailyCard(){
         mDatabase = FirebaseDatabase.getInstance();
-        mReferenceBooks = mDatabase.getReference("Daily Card");
+        mReferenceBooks = mDatabase.getReference("DailyCard");
     }
 
     public void readBooks(final DataStatus dataStatus){
