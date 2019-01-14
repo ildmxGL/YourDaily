@@ -21,108 +21,97 @@
             <include layout="@layout/snippet_top_searchbar"/>
         </RelativeLayout>
 
-        <!-- Middle Section -->
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/relLayout1"
+            android:id="@+id/profile_image"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:weightSum="8"
+            android:id="@+id/LinLayout"
+            android:layout_below="@id/profile_image">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Posts"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Writes"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:weightSum="8"
+            android:id="@+id/LinLayout2"
+            android:layout_below="@id/LinLayout">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:textStyle="bold"
+                android:text="12"
+                android:id="@+id/post_textview"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:textStyle="bold"
+                android:text="Taehyung Kim"
+                android:id="@+id/nick_textview"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:textStyle="bold"
+                android:text="12"
+                android:id="@+id/write_textview"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                />
+
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/LinLayout2"
+            android:layout_above="@id/bottom_navigation_view_holder">
+
+        </ListView>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/relLayout1"
-            android:id="@+id/relLayout2"
-            android:background="@drawable/white_grey_border_bottom">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/linLayout"
-                android:weightSum="100">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="25"
-                    android:layout_marginStart="25dp">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:id="@+id/profile_photo"
-                        app:civ_border_color="@color/black"
-                        app:civ_border_width="2dp"
-                        android:layout_centerVertical="true"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="75"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp">
-
-                    <include layout="@layout/snippet_top_profile"/>
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/linLayout"
-                android:id="@+id/linLayout2"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/display_name"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="Mitch"
-                    android:textSize="16sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/description"
-                    android:textColor="@color/black"
-                    android:text="I live in Vancouver, BC"
-                    android:textSize="16sp"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/website"
-                    android:textColor="@color/link_blue"
-                    android:text="https://codingwithmitch.com"
-                    android:textSize="16sp"
-                    android:layout_marginTop="5dp" />
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/relLayout3"
-                android:layout_below="@+id/linLayout2"
-                android:layout_marginBottom="50dp">
-
-                <GridView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/gridView"
-                    android:numColumns="2"
-                    android:verticalSpacing="1dp"
-                    android:horizontalSpacing="1dp"
-                    android:stretchMode="columnWidth"
-                    android:gravity="center">
-
-                </GridView>
-
-
-            </RelativeLayout>
-
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/bottom_navigation_view_holder">
+            <include layout = "@layout/bottom_navigation_view" />
         </RelativeLayout>
-        <include layout = "@layout/bottom_navigation_view" />
     </RelativeLayout>
 
 

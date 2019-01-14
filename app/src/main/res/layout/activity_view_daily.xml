@@ -6,65 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ViewDaily">
 
-    <ScrollView
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
+        >
+
+        <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/relLayout1">
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/mainDrawee" />
-            </RelativeLayout>
+            android:layout_height="match_parent"
+            android:id="@+id/mainDrawee"
+            fresco:actualImageScaleType="fitCenter"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/relLayout1">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:id="@+id/LinLayout"
-                    android:weightSum="10">
+    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:id="@+id/user_id" />
-
-                    <TextView
-                        android:layout_width="0dp"
-
-                        android:layout_height="match_parent"
-                        android:layout_weight="6"
-                        android:id="@id/title"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:id="@+id/writer_id"/>
-
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/LinLayout"
-                    android:id="@+id/main_text"/>
-
-            </RelativeLayout>
-        </RelativeLayout>
-
-    </ScrollView>
 
     <include layout = "@layout/snippet_bottom_context" />
 

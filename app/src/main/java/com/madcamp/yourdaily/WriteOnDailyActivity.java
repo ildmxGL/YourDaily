@@ -82,6 +82,34 @@ public class WriteOnDailyActivity extends AppCompatActivity {
 
                     }
                 });
+
+                /*
+
+                new FirebaseDatabasePreDaily().deletePreDaily(mIntent.getStringExtra("Key"), new FirebaseDatabasePreDaily.DataStatus() {
+                    @Override
+                    public void DataIsLoaded(List<PreDaily> books, List<String> keys) {
+
+                    }
+
+                    @Override
+                    public void DataIsInserted() {
+
+                    }
+
+                    @Override
+                    public void DataIsUpdated() {
+
+                    }
+
+                    @Override
+                    public void DataIsDeleted() {
+                        //Toast.makeText(WriteOnDailyActivity.this, "Book record has been deleted successfully!", Toast.LENGTH_LONG).show();
+                        finish();
+                        return;
+                    }
+                });
+
+                */
                 finish();
             }
         });

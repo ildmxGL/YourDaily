@@ -12,36 +12,37 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirebaseDatabaseDailyCard {
+public class FirebaseDatabaseProfile {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReferenceBooks;
-    private List<DailyCard> dailies = new ArrayList<>();
+    private List<Profile> profiles = new ArrayList<>();
 
     public interface DataStatus{
-        void DataIsLoaded(List<DailyCard> books, List<String> keys);
+        void DataIsLoaded(List<Profile> profiles, List<String> keys);
         void DataIsInserted();
         void DataIsUpdated();
         void DataIsDeleted();
 
     }
 
-    public FirebaseDatabaseDailyCard(){
+    public FirebaseDatabaseProfile(){
         mDatabase = FirebaseDatabase.getInstance();
-        mReferenceBooks = mDatabase.getReference("DailyCard");
+        mReferenceBooks = mDatabase.getReference("profile");
     }
 
-    public void readBooks(final DataStatus dataStatus){
+    public void readProfiles(final DataStatus dataStatus){
         mReferenceBooks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                dailies.clear();
+                profiles.clear();
                 List<String> keys = new ArrayList<>();
                 for(DataSnapshot keyNode : dataSnapshot.getChildren()){
                     keys.add(keyNode.getKey());
-                    DailyCard daily = keyNode.getValue(DailyCard.class);
-                        dailies.add(daily);
+                    Profile profile = keyNode.getValue(Profile.class);
+                    profiles.add(profile);
+
                 }
-                dataStatus.DataIsLoaded(dailies, keys);
+                dataStatus.DataIsLoaded(profiles, keys);
             }
 
             @Override
@@ -51,9 +52,9 @@ public class FirebaseDatabaseDailyCard {
         });
     }
 
-    public void addBook(DailyCard daily, final DataStatus dataStatus){
+    public void addPreDaily(Profile profile, final DataStatus dataStatus){
         String key = mReferenceBooks.push().getKey();
-        mReferenceBooks.child(key).setValue(daily)
+        mReferenceBooks.child(key).setValue(profile)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -62,8 +63,8 @@ public class FirebaseDatabaseDailyCard {
                 });
     }
 
-    public void updateBook(String key, DailyCard daily, final DataStatus dataStatus){
-        mReferenceBooks.child(key).setValue(daily)
+    public void updatePreDaily(String key, Profile profile, final DataStatus dataStatus){
+        mReferenceBooks.child(key).setValue(profile)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -72,7 +73,7 @@ public class FirebaseDatabaseDailyCard {
                 });
     }
 
-    public void deleteBook(String key, final DataStatus dataStatus){
+    public void deletePreDaily(String key, final DataStatus dataStatus){
         mReferenceBooks.child(key).setValue(null)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

@@ -17,6 +17,7 @@
                 android:textSize="36sp"
                 android:textColor="#111111"
                 android:ellipsize="end"
+                android:id="@+id/text_title"
                 android:lines="1"
                 android:maxLines="1"/>
 

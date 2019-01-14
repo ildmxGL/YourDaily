@@ -41,7 +41,7 @@ public class WriteDailyActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        new FirebaseDatabasePreDaily().readPreDaily(mAuth.getCurrentUser().getEmail(), new FirebaseDatabasePreDaily.DataStatus() {
+        new FirebaseDatabasePreDaily().readPreDaily(new FirebaseDatabasePreDaily.DataStatus() {
             @Override
             public void DataIsLoaded(List<PreDaily> books, List<String> keyss) {
                 Log.d(TAG, "DataIsLoaded: data Import");
@@ -82,6 +82,7 @@ public class WriteDailyActivity extends AppCompatActivity {
                 myIntent.putExtra("Title", preDailies.get(position).getTitle());
                 myIntent.putExtra("UserEmail", preDailies.get(position).getUserEmail());
                 myIntent.putExtra("UserNick", preDailies.get(position).getUserNick());
+                myIntent.putExtra("Key", keys.get(position));
                 startActivity(myIntent);
 
             }

@@ -11,7 +11,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 public class ViewDaily extends AppCompatActivity {
 
     private SimpleDraweeView mainDrawee;
-    private TextView mUser;
     private TextView mWriter;
     private TextView mTitle;
     private TextView mContent;
@@ -25,15 +24,13 @@ public class ViewDaily extends AppCompatActivity {
 
         Intent thisIntent = getIntent();
 
-        mUser = (TextView) findViewById(R.id.user_id);
-        mWriter = (TextView) findViewById(R.id.writer_id);
-        mTitle = (TextView) findViewById(R.id.title);
-        mContent = (TextView) findViewById(R.id.main_text);
+        mWriter = (TextView) findViewById(R.id.text_author);
+        mTitle = (TextView) findViewById(R.id.text_title);
+        mContent = (TextView) findViewById(R.id.text_context);
         mainDrawee = (SimpleDraweeView) findViewById(R.id.mainDrawee);
 
         mainUri = Uri.parse(thisIntent.getStringExtra("ImageUri"));
         mainDrawee.setImageURI(mainUri);
-        mUser.setText(thisIntent.getStringExtra("UserNick"));
         mWriter.setText(thisIntent.getStringExtra("WriterNick"));
         mTitle.setText(thisIntent.getStringExtra("Title"));
         mContent.setText(thisIntent.getStringExtra("Content"));

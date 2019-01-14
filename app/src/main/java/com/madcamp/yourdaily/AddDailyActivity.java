@@ -60,7 +60,7 @@ public class AddDailyActivity extends AppCompatActivity {
             }
         });
 
-        new FirebaseDatabasePreDaily().readPreDaily(mAuth.getCurrentUser().getEmail(), new FirebaseDatabasePreDaily.DataStatus() {
+        new FirebaseDatabasePreDaily().readPreDaily(new FirebaseDatabasePreDaily.DataStatus() {
             @Override
             public void DataIsLoaded(List<PreDaily> books, List<String> keyss) {
                 Log.d(TAG, "DataIsLoaded: data Import");
