@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private GridView gridView;
 
+
     //For swipe view
     private float x1,x2;
     static final int MIN_DISTANCE = 150;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupBottomNavigationView();
 
-        new FirebaseDatabaseDailyCard().readBooks(new FirebaseDatabaseDailyCard.DataStatus() {
+        new FirebaseDatabaseDailyCard().readBooks("", new FirebaseDatabaseDailyCard.DataStatus() {
             @Override
             public void DataIsLoaded(List<DailyCard> books, List<String> keyss) {
                 Log.d(TAG, "DataIsLoaded: data Import");
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
 
 
 

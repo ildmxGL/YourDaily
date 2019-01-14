@@ -1,21 +1,21 @@
 package com.madcamp.yourdaily;
 
-public class PreDailyCard{
+public class PreDaily {
     private String ImageUri;
+    private String Hashtag;
     private String Title;
     private String UserEmail;
     private String UserNick;
-    private String Hashtag;
 
-    public PreDailyCard() {
+    public PreDaily() {
     }
 
-    public PreDailyCard(String imageUri, String title, String userEmail, String userNick, String hashtag) {
+    public PreDaily(String imageUri, String hashtag, String title, String userEmail, String userNick) {
         ImageUri = imageUri;
+        Hashtag = hashtag;
         Title = title;
         UserEmail = userEmail;
         UserNick = userNick;
-        Hashtag = hashtag;
     }
 
     public String getImageUri() {
@@ -24,6 +24,14 @@ public class PreDailyCard{
 
     public void setImageUri(String imageUri) {
         ImageUri = imageUri;
+    }
+
+    public String getHashtag() {
+        return Hashtag;
+    }
+
+    public void setHashtag(String hashtag) {
+        Hashtag = hashtag;
     }
 
     public String getTitle() {
@@ -48,14 +56,6 @@ public class PreDailyCard{
 
     public void setUserNick(String userNick) {
         UserNick = userNick;
-    }
-
-    public String getHashtag() {
-        return Hashtag;
-    }
-
-    public void setHashtag(String hashtag) {
-        Hashtag = hashtag;
     }
 
 }
