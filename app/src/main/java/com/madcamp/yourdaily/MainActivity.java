@@ -1,11 +1,14 @@
 package com.madcamp.yourdaily;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private float x1,x2;
     static final int MIN_DISTANCE = 150;
 
+    private AlertDialog.Builder builder;
 
 
     //private TextView testText;
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         //testText = (TextView)findViewById(R.id.testtxt);
 
+        builder = new AlertDialog.Builder(this);
         dailies = new ArrayList<>();
         final ArrayList<Uri> imgURLs = new ArrayList<>();
 
@@ -74,7 +79,33 @@ public class MainActivity extends AppCompatActivity {
         logoutImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                //Uncomment the below code to Set the message and title from the strings.xml file
+                builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
+
+                //Setting message manually and performing action on button click
+                builder.setMessage("Do you want to Log Out?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                mAuth.signOut();
+                                Intent loginIntent = new Intent(MainActivity.this, UserLoginActivity.class);
+                                startActivity(loginIntent);
+
+                                Toast.makeText(getApplicationContext(),"Successfully logged out", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Action for 'NO' Button
+                                dialog.cancel();
+                                Toast.makeText(getApplicationContext(),"log out canceled", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("AlertDialogExample");
+                alert.show();
             }
         });
         new FirebaseDatabaseDailyCard().readBooks( new FirebaseDatabaseDailyCard.DataStatus() {
@@ -134,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Login Activity if not logged in
         if(mAuth.getCurrentUser()==null){
-            Intent intent = new Intent(MainActivity.this, LoginChooseActivity.class);
+            Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
             startActivity(intent);
             finish(); return;
         }
@@ -167,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
+
 
 
 

@@ -16,11 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".LoginChooseActivity" />
         <activity android:name=".UserLoginActivity" />
@@ -30,7 +25,14 @@
         <activity android:name=".AddDailyActivity" />
         <activity android:name=".AddPreDaily" />
         <activity android:name=".WriteOnDailyActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".ViewPreDaily"/>
         <activity android:name=".WriteViewPreDaily"/>
     </application>
