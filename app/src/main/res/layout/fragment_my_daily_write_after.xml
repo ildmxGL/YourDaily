@@ -8,18 +8,19 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/relLayout1"
+        android:id="@+id/relLayout2"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daily"
+            android:text="Written"
             android:textSize="40sp"
             android:textStyle="bold"
             android:fontFamily="@font/frederickathegreat_regular"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_alignParentRight="true"
             android:id="@+id/title"
             android:layout_centerVertical="true"
             android:textAllCaps="false"/>
@@ -27,21 +28,19 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_swipe_right"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            android:layout_centerVertical="true"
-            />
+            android:src="@drawable/ic_swipe_left"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
-
 
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gridDaily"
+        android:id="@+id/gridPreDaily"
         android:numColumns="2"
-        android:layout_below="@+id/relLayout1">
+        android:layout_below="@+id/relLayout2">
 
     </GridView>
 

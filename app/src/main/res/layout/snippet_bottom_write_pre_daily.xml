@@ -1,0 +1,111 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomContext"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="72dp"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:paddingBottom="24dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="24dp"
+        android:background="@drawable/bg_bottom_context"
+        android:orientation="vertical">
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bar"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today's Title"
+                    android:fontFamily="@font/thasadith_bold"
+                    android:textSize="36sp"
+                    android:textColor="#111111"
+                    android:ellipsize="end"
+                    android:id="@+id/text_title"
+                    android:lines="1"
+                    android:maxLines="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="by"
+                    android:padding="2dp"
+                    android:fontFamily="@font/shutter_stone_standar"
+                    android:textStyle="italic"
+                    android:textSize="40sp"
+                    android:textColor="#333333"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/shutter_stone_standar"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="4dp"
+                    android:padding="2dp"
+                    android:id="@+id/text_author"
+                    android:text="author"
+                    android:textSize="40sp"
+                    android:textColor="#333333"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jan. 14, 2019"
+                android:id="@+id/text_date"
+                android:textSize="24sp"
+                android:fontFamily="@font/thasadith_bold"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hashtags"
+                android:id="@+id/text_hash"
+                android:textSize="20sp"
+                android:fontFamily="@font/thasadith_bold"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_centerHorizontal="true"
+                fab:fab_colorNormal="@color/white"
+                fab:fab_title="Write on Clue"
+                fab:fab_icon="@drawable/ic_pencil"
+                fab:fab_colorPressed="@color/white_pressed"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</merge>

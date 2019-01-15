@@ -28,20 +28,6 @@ public class AddDailyActivity extends AppCompatActivity {
     private Context mContext = AddDailyActivity.this;
     private static final String TAG = "AddDailyActivity";
 
-//    private ImageButton addImageButton;
-    private ArrayList<PreDaily> preDailies;
-//    private ArrayList<String> keys;
-
-    private GridView preDailyView;
-    private GridView DailyView;
-
-    final ArrayList<Uri> imgURLs = new ArrayList<>();
-
-    FirebaseAuth mAuth;
-
-    private List<String> keys;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +45,6 @@ public class AddDailyActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
 
         setupBottomNavigationView();
-
-        mAuth = FirebaseAuth.getInstance();
-
-        preDailies = new ArrayList<>();
 
     }
 
