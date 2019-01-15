@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:id="@+id/relLayout1">
 
-        <include layout="@layout/snippet_top_searchbar"/>
+        <include layout="@layout/snippet_top_profilebar"/>
 
     </RelativeLayout>
 
@@ -37,7 +37,7 @@
             android:src="@drawable/ic_message"
             android:layout_gravity="start|top"
             android:layout_marginTop="72dp"
-            android:layout_marginLeft="56dp"/>
+            android:layout_marginStart="56dp" />
 
         <ImageView
             android:layout_width="32dp"
@@ -45,7 +45,7 @@
             android:src="@drawable/ic_book_white"
             android:layout_gravity="end|top"
             android:layout_marginTop="72dp"
-            android:layout_marginRight="56dp"/>
+            android:layout_marginEnd="56dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -74,7 +74,8 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:src="@drawable/ic_ice_cream_white"
-                    android:rotation="-20"/>
+                    android:rotation="-20"
+                    android:layout_marginStart="-4dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -84,7 +85,6 @@
                     android:textSize="16sp"
                     android:fontFamily="@font/robotocondensed_regular"
                     android:textColor="@color/white"
-                    android:layout_below="@+id/nick_textview"
                     android:layout_marginStart="8dp"
                     android:layout_gravity="center_vertical"/>
 
