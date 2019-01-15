@@ -2,6 +2,7 @@ package com.madcamp.yourdaily;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.shobhitpuri.custombuttons.GoogleSignInButton;
+
+import java.util.List;
 
 
 public class UserLoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
@@ -191,6 +194,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
                 Intent intent = new Intent(mContext, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                //Do something after 100ms
                 finish(); return;
             }
             else{
@@ -203,7 +207,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct){
         Log.d(TAG, "firebaseAuthWithGoogle: get goole authentication.");
         
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
+        final AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -211,6 +215,59 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
                         if(!task.isSuccessful()){
                             Toast.makeText(mContext, "인증 실패", Toast.LENGTH_SHORT).show();
                         }else{
+                            String Email = task.getResult().getUser().getEmail();
+                            FriendCard newFriendCard = new FriendCard();
+                            newFriendCard.setProfileUri("https://firebasestorage.googleapis.com/v0/b/your-daily.appspot.com/o/images%2Fyour_daily.png?alt=media&token=2e98a556-9951-4387-9fd8-f7056d983751");
+                            newFriendCard.setCard1Uri("");
+                            newFriendCard.setCard2Uri("");
+                            newFriendCard.setCard3Uri("");
+                            new FirebaseDatabaseFriendCard().addFriendCard(newFriendCard, new FirebaseDatabaseFriendCard.DataStatus() {
+                                @Override
+                                public void DataIsLoaded(List<FriendCard> friendCards, List<String> keys) {
+
+                                }
+
+                                @Override
+                                public void DataIsInserted() {
+
+                                }
+
+                                @Override
+                                public void DataIsUpdated() {
+
+                                }
+
+                                @Override
+                                public void DataIsDeleted() {
+
+                                }
+                            });
+
+                            Profile newProfile = new Profile();
+                            newProfile.setEmail(Email);
+                            newProfile.setNick(Email);
+                            newProfile.setProfileImage("https://firebasestorage.googleapis.com/v0/b/your-daily.appspot.com/o/images%2Fyour_daily.png?alt=media&token=2e98a556-9951-4387-9fd8-f7056d983751");
+                            new FirebaseDatabaseProfile().addPreDaily(newProfile, new FirebaseDatabaseProfile.DataStatus() {
+                                @Override
+                                public void DataIsLoaded(List<Profile> profiles, List<String> keys) {
+
+                                }
+
+                                @Override
+                                public void DataIsInserted() {
+
+                                }
+
+                                @Override
+                                public void DataIsUpdated() {
+
+                                }
+
+                                @Override
+                                public void DataIsDeleted() {
+
+                                }
+                            });
                             Toast.makeText(mContext, "구글 로그인 인증 성공", Toast.LENGTH_SHORT).show();
                         }
                     }

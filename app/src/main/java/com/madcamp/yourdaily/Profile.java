@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Profile {
     private String email;
-    private List<String> friendEmails;
     private String nick;
     private String profileImage;
 
@@ -13,7 +12,6 @@ public class Profile {
 
     public Profile(String email, List<String> friendEmails, String nick, String profileImage) {
         this.email = email;
-        this.friendEmails = friendEmails;
         this.nick = nick;
         this.profileImage = profileImage;
     }
@@ -24,14 +22,6 @@ public class Profile {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<String> getFriendEmails() {
-        return friendEmails;
-    }
-
-    public void setFriendEmails(List<String> friendEmails) {
-        this.friendEmails = friendEmails;
     }
 
     public String getNick() {
