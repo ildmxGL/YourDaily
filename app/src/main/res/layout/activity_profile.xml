@@ -1,119 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    android:background="@color/white">
 
+    <!-- Top Toolbar -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="50dp"
+        android:id="@+id/relLayout1">
 
+        <include layout="@layout/snippet_top_mainbar"/>
 
-        <!-- Top Toolbar -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/relLayout1">
+    </RelativeLayout>
 
-            <include layout="@layout/snippet_top_searchbar"/>
-        </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relLayout1"
+        android:id="@+id/relLayout2"
+        android:layout_above="@+id/bottom_navigation_view_holder"
+        android:background="#F2FFFE">
+
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@id/relLayout1"
-            android:id="@+id/profile_image"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:weightSum="8"
-            android:id="@+id/LinLayout"
-            android:layout_below="@id/profile_image">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="Posts"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:text="Name"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="Writes"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                />
+            android:layout_height="255dp"
+            fresco:placeholderImage="@drawable/profile_seulgi"
+            fresco:actualImageScaleType="fitCenter"
+            android:id="@+id/profile_image"
+            android:layout_gravity="top" />
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:weightSum="8"
-            android:id="@+id/LinLayout2"
-            android:layout_below="@id/LinLayout">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:textStyle="bold"
-                android:text="12"
-                android:id="@+id/post_textview"
-                android:textAlignment="center"
-                android:textSize="28sp"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:textStyle="bold"
-                android:text="Taehyung Kim"
-                android:id="@+id/nick_textview"
-                android:textAlignment="center"
-                android:textSize="28sp"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:textStyle="bold"
-                android:text="12"
-                android:id="@+id/write_textview"
-                android:textAlignment="center"
-                android:textSize="28sp"
-                />
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_message"
+            android:layout_gravity="start|top"
+            android:layout_marginTop="72dp"
+            android:layout_marginLeft="56dp"/>
 
-        </LinearLayout>
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/LinLayout2"
-            android:layout_above="@id/bottom_navigation_view_holder">
-
-        </ListView>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_book_white"
+            android:layout_gravity="end|top"
+            android:layout_marginTop="72dp"
+            android:layout_marginRight="56dp"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/bottom_navigation_view_holder">
-            <include layout = "@layout/bottom_navigation_view" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mol-eap Kim"
+                android:id="@+id/nick_textview"
+                android:textSize="24sp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nick_textview"
+                android:layout_marginTop="0dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_ice_cream_white"
+                    android:rotation="-20"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excited"
+                    android:id="@+id/textview_emotion"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:textColor="@color/white"
+                    android:layout_below="@+id/nick_textview"
+                    android:layout_marginStart="8dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nick_textview"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:id="@+id/middle_profile">
+
+                <include layout="@layout/snippet_middle_profile" />
+
+            </RelativeLayout>
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/middle_profile"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="32dp"
+                android:numColumns="2">
+
+            </GridView>
+
         </RelativeLayout>
+
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_navigation_view_holder">
+
+        <include layout = "@layout/bottom_navigation_view" />
+
     </RelativeLayout>
 
-
-
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

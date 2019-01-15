@@ -47,8 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
         setupBottomNavigationView();
 
         profileImage = (SimpleDraweeView) findViewById(R.id.profile_image);
-        posts = (TextView) findViewById(R.id.post_textview);
-        writes = (TextView) findViewById(R.id.write_textview);
+        posts = (TextView) findViewById(R.id.tvPosts);
+        writes = (TextView) findViewById(R.id.tvWrites);
         nickname = (TextView) findViewById(R.id.nick_textview);
 
         mAuth = FirebaseAuth.getInstance();
