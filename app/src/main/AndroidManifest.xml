@@ -31,6 +31,7 @@
         <activity android:name=".AddPreDaily" />
         <activity android:name=".WriteOnDailyActivity"></activity>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ViewPreDaily"/>
     </application>
 
 </manifest>
