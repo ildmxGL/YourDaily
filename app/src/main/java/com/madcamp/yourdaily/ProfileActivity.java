@@ -1,5 +1,6 @@
 package com.madcamp.yourdaily;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -39,10 +40,13 @@ public class ProfileActivity extends AppCompatActivity {
     private int writenum = 0;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
 
         setupBottomNavigationView();
 
@@ -139,4 +143,7 @@ public class ProfileActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
+
+
 }
