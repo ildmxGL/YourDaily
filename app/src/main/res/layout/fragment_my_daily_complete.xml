@@ -30,8 +30,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_swipe_right"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
             android:layout_centerVertical="true"
             android:visibility="invisible"/>
 

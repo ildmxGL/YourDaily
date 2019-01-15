@@ -44,7 +44,7 @@
         android:id="@+id/swipe"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        android:layout_marginTop="-20dp"
+        android:layout_marginTop="-16dp"
         app:lottie_fileName="swipe.json"/>
 
     <GridView
