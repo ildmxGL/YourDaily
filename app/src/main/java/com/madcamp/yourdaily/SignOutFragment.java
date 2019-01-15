@@ -47,6 +47,7 @@ public class SignOutFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(getContext(), "Signed out successfully", Toast.LENGTH_SHORT).show();
                 Intent loginIntent = new Intent(getContext(), UserLoginActivity.class);
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(loginIntent);
                 getActivity().finish();
             }
