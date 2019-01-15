@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:id="@+id/relLayout1">
 
-        <include layout="@layout/snippet_top_addDailyBar"/>
+        <include layout="@layout/snippet_top_add_daily_bar"/>
     </RelativeLayout>
 
     <RelativeLayout
