@@ -64,6 +64,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(RegisterUserActivity.this, "User registerd successfully!", Toast.LENGTH_LONG).show();
                                 FriendCard newFriendCard = new FriendCard();
+                                newFriendCard.setEmail(emailTextView.getText().toString());
                                 newFriendCard.setProfileUri("https://firebasestorage.googleapis.com/v0/b/your-daily.appspot.com/o/images%2Fyour_daily.png?alt=media&token=2e98a556-9951-4387-9fd8-f7056d983751");
                                 newFriendCard.setCard1Uri("");
                                 newFriendCard.setCard2Uri("");

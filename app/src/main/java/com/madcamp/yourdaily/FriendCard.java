@@ -1,6 +1,7 @@
 package com.madcamp.yourdaily;
 
 public class FriendCard {
+    private String email;
     private String profileUri;
     private String card1Uri;
     private String card2Uri;
@@ -9,11 +10,20 @@ public class FriendCard {
     public FriendCard() {
     }
 
-    public FriendCard(String profileUri, String card1Uri, String card2Uri, String card3Uri) {
+    public FriendCard(String email, String profileUri, String card1Uri, String card2Uri, String card3Uri) {
+        this.email = email;
         this.profileUri = profileUri;
         this.card1Uri = card1Uri;
         this.card2Uri = card2Uri;
         this.card3Uri = card3Uri;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getProfileUri() {

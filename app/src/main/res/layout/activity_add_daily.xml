@@ -49,7 +49,7 @@
 
     </RelativeLayout>
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
+    <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -57,15 +57,7 @@
         android:layout_marginBottom="64dp"
         android:layout_marginRight="32dp"
         android:id = "@+id/add_daily_button"
-        fab:fab_addButtonPlusIconColor="@color/half_black"
-        fab:fab_addButtonColorNormal="@color/white"
-        fab:fab_addButtonColorPressed="@color/white_pressed"
-        fab:fab_labelStyle="@style/menu_labels_style"
-        fab:fab_icon="@drawable/ic_gallery">
-
-
-
-    </com.getbase.floatingactionbutton.FloatingActionButton>
+        />
 
     <include layout = "@layout/bottom_navigation_view" />
 

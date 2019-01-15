@@ -3,6 +3,8 @@ package com.madcamp.yourdaily;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import com.getbase.floatingactionbutton.*;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 

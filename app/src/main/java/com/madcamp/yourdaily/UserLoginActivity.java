@@ -217,6 +217,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
                         }else{
                             String Email = task.getResult().getUser().getEmail();
                             FriendCard newFriendCard = new FriendCard();
+                            newFriendCard.setEmail(Email);
                             newFriendCard.setProfileUri("https://firebasestorage.googleapis.com/v0/b/your-daily.appspot.com/o/images%2Fyour_daily.png?alt=media&token=2e98a556-9951-4387-9fd8-f7056d983751");
                             newFriendCard.setCard1Uri("");
                             newFriendCard.setCard2Uri("");
