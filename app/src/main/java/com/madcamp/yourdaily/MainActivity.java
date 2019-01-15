@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 //Creating dialog box
                 AlertDialog alert = builder.create();
                 //Setting the title manually
-                alert.setTitle("AlertDialogExample");
+                alert.setTitle("LogOut");
                 alert.show();
             }
         });

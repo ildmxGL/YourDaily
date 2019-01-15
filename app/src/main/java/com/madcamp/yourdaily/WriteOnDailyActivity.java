@@ -29,6 +29,11 @@ public class WriteOnDailyActivity extends AppCompatActivity {
     private Intent mIntent;
     private FirebaseAuth mAuth;
 
+    private String ProfileUri;
+    private FriendCard mFriendCard;
+    private String key;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +46,13 @@ public class WriteOnDailyActivity extends AppCompatActivity {
 
         mIntent = getIntent();
         mAuth = FirebaseAuth.getInstance();
+        mFriendCard = new FriendCard();
 
         toWriteDrawee.setImageURI(Uri.parse(mIntent.getStringExtra("ImageUri")));
         getTitle.setText(mIntent.getStringExtra("Title"));
         getHashtag.setText(mIntent.getStringExtra("Hashtag"));
-
+        ProfileUri = "";
+        key = "";
 
         submitButton = (Button)findViewById(R.id.submitDailyButton);
 
@@ -82,6 +89,85 @@ public class WriteOnDailyActivity extends AppCompatActivity {
 
                     }
                 });
+
+                new FirebaseDatabaseProfile().readProfiles(new FirebaseDatabaseProfile.DataStatus() {
+                    @Override
+                    public void DataIsLoaded(List<Profile> profiles, List<String> keys) {
+                        for(int j=0; j<profiles.size(); j++){
+                            if(mAuth.getCurrentUser().getEmail().equals(profiles.get(j).getEmail())){
+                                ProfileUri = profiles.get(j).getProfileImage();
+                                break;
+                            }
+                        }
+                        new FirebaseDatabaseFriendCard().readFriendCards(new FirebaseDatabaseFriendCard.DataStatus() {
+
+                            @Override
+                            public void DataIsLoaded(List<FriendCard> friendCards, List<String> keys) {
+                                for (int i=0; i<friendCards.size(); i++){
+                                    if(friendCards.get(i).getProfileUri().equals(ProfileUri)){
+                                        mFriendCard = friendCards.get(i);
+                                        key = keys.get(i);
+                                        break;
+                                    }
+                                    mFriendCard.setCard3Uri(mFriendCard.getCard2Uri());
+                                    mFriendCard.setCard2Uri(mFriendCard.getCard1Uri());
+                                    mFriendCard.setCard1Uri(mIntent.getStringExtra("ImageUri"));
+
+                                    new FirebaseDatabaseFriendCard().updateFriendCard(key, mFriendCard, new FirebaseDatabaseFriendCard.DataStatus() {
+                                        @Override
+                                        public void DataIsLoaded(List<FriendCard> friendCards, List<String> keys) {
+
+                                        }
+
+                                        @Override
+                                        public void DataIsInserted() {
+
+                                        }
+
+                                        @Override
+                                        public void DataIsUpdated() {
+
+                                        }
+
+                                        @Override
+                                        public void DataIsDeleted() {
+
+                                        }
+                                    });
+
+
+                                }
+                            }
+                            @Override
+                            public void DataIsInserted() {
+
+                            }
+                            @Override
+                            public void DataIsUpdated() {
+
+                            }
+                            @Override
+                            public void DataIsDeleted() {
+
+                            }
+                        });
+                    }
+                    @Override
+                    public void DataIsInserted() {
+
+                    }
+
+                    @Override
+                    public void DataIsUpdated() {
+
+                    }
+
+                    @Override
+                    public void DataIsDeleted() {
+
+                    }
+                });
+
 
 
                 finish();

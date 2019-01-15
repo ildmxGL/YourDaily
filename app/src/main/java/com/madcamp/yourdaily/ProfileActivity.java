@@ -2,18 +2,23 @@ package com.madcamp.yourdaily;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +37,14 @@ public class ProfileActivity extends AppCompatActivity {
     private ArrayList<Profile> currentProfiles;
     private Profile currentProfile;
 
+    private ImageView MenuView;
+
     private FirebaseAuth mAuth;
     private ArrayList<String> keys;
     private String mEmail;
+
+    private GridView friendView;
+
 
     private int postnum = 0;
     private int writenum = 0;
@@ -60,6 +70,34 @@ public class ProfileActivity extends AppCompatActivity {
         currentProfile = new Profile();
         myDailies = new ArrayList<>();
         mEmail = mAuth.getCurrentUser().getEmail();
+        friendView = (GridView) findViewById(R.id.friend_grid_view);
+
+
+        MenuView = (ImageView) findViewById(R.id.profileMenu);
+
+        new FirebaseDatabaseFriendCard().readFriendCards(new FirebaseDatabaseFriendCard.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<FriendCard> friendCards, List<String> keys) {
+                ArrayList<FriendCard> friendCard = new ArrayList<FriendCard>(friendCards);
+                FriendCardAdapter myAdapter = new FriendCardAdapter(mContext, friendCard);
+                friendView.setAdapter(myAdapter);
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
 
         new FirebaseDatabaseProfile().readProfiles( new FirebaseDatabaseProfile.DataStatus() {
             @Override
@@ -129,6 +167,14 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void DataIsDeleted() {
 
+            }
+        });
+
+        MenuView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent menuIntent = new Intent(ProfileActivity.this, AccountSettingsActivity.class);
+                startActivity(menuIntent);
             }
         });
 

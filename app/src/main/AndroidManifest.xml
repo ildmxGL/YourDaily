@@ -35,6 +35,7 @@
         </activity>
         <activity android:name=".ViewPreDaily"/>
         <activity android:name=".WriteViewPreDaily"/>
+        <activity android:name=".AccountSettingsActivity"/>
     </application>
 
 </manifest>
