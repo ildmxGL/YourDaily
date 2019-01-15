@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="12dp">
 
@@ -20,21 +21,31 @@
             android:textStyle="bold"
             android:fontFamily="@font/frederickathegreat_regular"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="24dp"
-            android:layout_alignParentRight="true"
+            android:layout_marginEnd="24dp"
+            android:layout_alignParentEnd="true"
             android:id="@+id/title"
             android:layout_centerVertical="true"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false" />
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_swipe_left"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="16dp"
-            android:layout_centerVertical="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/swipe"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_marginTop="-20dp"
+        app:lottie_fileName="swipe.json"/>
 
     <GridView
         android:layout_width="match_parent"
@@ -46,5 +57,7 @@
         android:horizontalSpacing="5dip">
 
     </GridView>
+
+
 
 </RelativeLayout>

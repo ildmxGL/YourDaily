@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -32,10 +33,19 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
             android:layout_centerVertical="true"
-            />
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/swipe"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_alignEnd="@+id/relLayout1"
+        android:layout_marginTop="-12dp"
+        app:lottie_fileName="swipe_right.json"/>
 
     <GridView
         android:layout_width="match_parent"
