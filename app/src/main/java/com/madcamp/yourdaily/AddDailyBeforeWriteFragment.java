@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AddDailyNotYetFragment extends Fragment {
+public class AddDailyBeforeWriteFragment extends Fragment {
     private GridView notYetGrid;
-    private static final String TAG = "AddDailyNotYetFragment";
+    private static final String TAG = "AddDailyBeforeWriteFrag";
     final ArrayList<Uri> imgURLs = new ArrayList<>();
 
     private ArrayList<PreDaily> preDailies;
@@ -39,12 +39,12 @@ public class AddDailyNotYetFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_my_daily_not_yet, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_daily_write_before, container, false);
 
         preDailies = new ArrayList<>();
         mAuth = FirebaseAuth.getInstance();
         mEmail = mAuth.getCurrentUser().getEmail();
-        preDailyView = (GridView) view.findViewById(R.id.gridPreDaily);
+        preDailyView = (GridView) view.findViewById(R.id.gridDaily);
         keyHash = new HashMap<>();
 
         new FirebaseDatabasePreDaily().readPreDaily(new FirebaseDatabasePreDaily.DataStatus() {
@@ -57,11 +57,9 @@ public class AddDailyNotYetFragment extends Fragment {
 
                 Integer j = 0;
                 for (int i = 0; i < preDailies.size(); i++) {
-                    if(mEmail.equals(preDailies.get(i).getUserEmail())) {
-                        imgURLs.add(Uri.parse(preDailies.get(i).getImageUri()));
-                        keyHash.put(j, i);
-                        j++;
-                    }
+                    imgURLs.add(Uri.parse(preDailies.get(i).getImageUri()));
+                    keyHash.put(j, i);
+                    j++;
                 }
 
                 GridAdapter myAdapter = new GridAdapter(getContext(), imgURLs);
@@ -87,7 +85,7 @@ public class AddDailyNotYetFragment extends Fragment {
         preDailyView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(getContext(), ViewPreDaily.class);
+                Intent myIntent = new Intent(getContext(), WriteViewPreDaily.class);
                 myIntent.putExtra("ImageUri", preDailies.get(keyHash.get(position)).getImageUri());
                 myIntent.putExtra("Title", preDailies.get(keyHash.get(position)).getTitle());
                 myIntent.putExtra("Hashtag", preDailies.get(keyHash.get(position)).getHashtag());

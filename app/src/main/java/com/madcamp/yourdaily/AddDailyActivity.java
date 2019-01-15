@@ -28,18 +28,6 @@ public class AddDailyActivity extends AppCompatActivity {
     private Context mContext = AddDailyActivity.this;
     private static final String TAG = "AddDailyActivity";
 
-//    private ImageButton addImageButton;
-    private ArrayList<PreDaily> preDailies;
-   private ArrayList<String> keys;
-
-    private GridView preDailyView;
-    private GridView DailyView;
-
-    final ArrayList<Uri> imgURLs = new ArrayList<>();
-
-    FirebaseAuth mAuth;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,59 +46,6 @@ public class AddDailyActivity extends AppCompatActivity {
 
         setupBottomNavigationView();
 
-        mAuth = FirebaseAuth.getInstance();
-
-        preDailies = new ArrayList<>();
-
-//        addImageButton = (ImageButton) findViewById(R.id.AddDailyButton);
-//
-//        preDailyView = (GridView) findViewById(R.id.gridPreDaily);
-//        DailyView = (GridView) findViewById(R.id.gridDaily);
-
-//        addImageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent myIntent = new Intent(AddDailyActivity.this, AddPreDaily.class);
-//                startActivity(myIntent);
-//            }
-//        });
-
-        init();
-
-    }
-
-    private void init() {
-//        new FirebaseDatabasePreDaily().readPreDaily(mAuth.getCurrentUser().getEmail(), new FirebaseDatabasePreDaily.DataStatus() {
-//            @Override
-//            public void DataIsLoaded(List<PreDaily> books, List<String> keyss) {
-//                Log.d(TAG, "DataIsLoaded: data Import");
-//                preDailies = new ArrayList<PreDaily>(books);
-//                Log.d(TAG, "DataIsLoaded: dailies recived : " + preDailies.get(0).getImageUri());
-//                keys = new ArrayList<String>(keyss);
-//
-//                for (int i = 0; i < preDailies.size(); i++) {
-//                    imgURLs.add(Uri.parse(preDailies.get(i).getImageUri()));
-//                }
-//
-//                GridAdapter myAdapter = new GridAdapter(AddDailyActivity.this, imgURLs);
-//                preDailyView.setAdapter(myAdapter);
-//            }
-//
-//            @Override
-//            public void DataIsInserted() {
-//
-//            }
-//
-//            @Override
-//            public void DataIsUpdated() {
-//
-//            }
-//
-//            @Override
-//            public void DataIsDeleted() {
-//
-//            }
-//        });
     }
 
     // Adapter for the viewpager using FragmentPagerAdapter

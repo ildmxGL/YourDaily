@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AddDailyCompleteFragment extends Fragment {
+public class AddDailyAfterWriteFragment extends Fragment {
 
     private GridView completeDiaryGrid;
-    private static final String TAG = "AddDailyCompleteFragmen";
+    private static final String TAG = "AddDailyCompleteWriteFr";
 
     private ArrayList<Uri> imgURLs;
     private ArrayList<DailyCard> dailies;
@@ -40,9 +40,9 @@ public class AddDailyCompleteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_my_daily_complete, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_daily_write_after, container, false);
 
-        completeDiaryGrid = (GridView) view.findViewById(R.id.gridDaily);
+        completeDiaryGrid = (GridView) view.findViewById(R.id.gridPreDaily);
 
         mAuth = FirebaseAuth.getInstance();
         mEmail = mAuth.getCurrentUser().getEmail();
@@ -59,7 +59,7 @@ public class AddDailyCompleteFragment extends Fragment {
 
                 Integer j = 0;
                 for (int i = 0; i < dailies.size(); i++) {
-                    if(mEmail.equals(dailies.get(i).getUserEmail())) {
+                    if(mEmail.equals(dailies.get(i).getWriterEmail())) {
                         imgURLs.add(Uri.parse(dailies.get(i).getImageUri()));
                         keyHash.put(j, i);
                         j++;

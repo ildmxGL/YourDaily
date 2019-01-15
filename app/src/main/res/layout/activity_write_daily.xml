@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WriteDailyActivity">
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="5">
+        android:layout_height="50dp"
+        android:id="@+id/relLayout1">
 
-            <GridView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:numColumns="2"
-                android:id="@+id/writtableGrid">
-            </GridView>
-
-            <GridView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:numColumns="3"
-                android:id="@+id/writtenGrid">
-            </GridView>
-
-
-        </LinearLayout>
-
-        <include layout = "@layout/bottom_navigation_view" />
+        <include layout="@layout/snippet_top_mainbar"/>
     </RelativeLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_below="@id/relLayout1"
+        android:background="@color/white_grey"
+        android:layout_marginTop="16dp">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relLayout1"
+        android:id="@+id/relLayout2"
+        android:layout_marginTop="8dp">
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/tab_layout"
+            android:elevation="6dp"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@drawable/white_rectangle_button"
+            android:layout_centerHorizontal="true">
+
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tab_layout"
+            android:isScrollContainer="true"/>
+
+    </RelativeLayout>
+
+    <include layout = "@layout/bottom_navigation_view" />
+
+
+</RelativeLayout>
