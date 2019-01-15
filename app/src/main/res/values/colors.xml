@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#B2000000</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="grey">#BFBFBF</color>
@@ -10,7 +10,7 @@
     <color name="link_blue">#005CE6</color>
 
     <color name="title_black">#2d2c2b</color>
-    <color name="white_grey">#E7E7E7</color>
+    <color name="white_grey">#F3F3F3</color>
 
     <color name="google_red">#dd4b39</color>
     <color name="google_red_pressed">#DD3939</color>

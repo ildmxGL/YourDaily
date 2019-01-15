@@ -24,7 +24,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/relLayout1"
         android:id="@+id/relLayout2"
         android:layout_marginTop="8dp">
@@ -45,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tab_layout"
-            android:isScrollContainer="true"/>
+            android:isScrollContainer="true"
+            android:layout_marginBottom="50dp"/>
 
     </RelativeLayout>
 
@@ -54,10 +55,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="72dp"
         android:layout_marginRight="32dp"
-        android:id = "@+id/add_daily_button"
-        />
+        android:id="@+id/add_daily_button"
+        android:src="@drawable/ic_pencil" />
 
     <include layout = "@layout/bottom_navigation_view" />
 

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".WriteOnDailyActivity"
+    android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:background="@drawable/gamseong">
 
     <RelativeLayout
@@ -34,14 +32,16 @@
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:id="@+id/to_write_drawee"
-                android:background="@drawable/blank_image"
+                fresco:placeholderImage="@drawable/blank_image_logo"
+                fresco:actualImageScaleType="fitCenter"
                 app:layout_constraintDimensionRatio="H, 1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                android:scaleType="centerCrop"/>
 
         </android.support.constraint.ConstraintLayout>
 
@@ -86,42 +86,35 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/robotocondensed_regular"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:layout_below="@id/relLayout2"
-            android:layout_above="@id/LinLayout3"
-            android:padding="15dp"
-            android:id="@+id/LinLayout2"
-            android:background="@drawable/white_rectangle_button">
-
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/content_edittext"
-                android:background="@android:color/transparent"
-                />
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:layout_marginTop="24dp"
+                android:padding="15dp"
+                android:id="@+id/LinLayout2"
+                android:background="@drawable/white_rectangle_button">
 
-        </LinearLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/content_edittext"
+                    android:background="@android:color/transparent" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/LinLayout3"
-            android:layout_centerHorizontal="true">
+            </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_height="0dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="32dp"
                 android:text="Submit"
                 android:id="@+id/submitDailyButton"
-                android:background="@drawable/white_rectangle_button"/>
-        </RelativeLayout>
+                android:background="@drawable/white_rectangle_button"
+                android:layout_weight="1"
+                android:layout_gravity="bottom|center_horizontal" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

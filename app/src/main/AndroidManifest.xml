@@ -15,9 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileActivity">
-        </activity>
-        <activity android:name=".LoginChooseActivity" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".UserLoginActivity" />
         <activity android:name=".RegisterUserActivity" />
         <activity android:name=".ViewDaily" />
@@ -31,7 +29,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".ViewPreDaily"/>
         <activity android:name=".WriteViewPreDaily"/>

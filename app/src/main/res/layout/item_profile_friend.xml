@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         xmlns:fresco="http://schemas.android.com/apk/res-auto"
-        >
+        android:id="@+id/list_item"
+        android:layout_marginStart="52dp">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="70dp"
@@ -20,10 +21,10 @@
             fresco:actualImageScaleType="fitCenter"
             android:id="@+id/drawee1"
             android:padding="4dp"
-            android:layout_marginStart="220dp"
+            android:layout_marginStart="200dp"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="-5dp"
-            android:background="@drawable/white_round_profile_friend"/>
+            android:background="@drawable/white_round_profile_friend" />
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="70dp"
@@ -32,7 +33,7 @@
             fresco:placeholderImage="@drawable/logo_your_daily"
             fresco:actualImageScaleType="fitCenter"
             android:padding="4dp"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="140dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/white_round_profile_friend" />
 
@@ -43,19 +44,29 @@
             fresco:actualImageScaleType="fitCenter"
             android:id="@+id/drawee3"
             android:padding="4dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="80dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/white_round_profile_friend"
             android:layout_marginTop="5dp"/>
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:layout_marginStart="40dp"
-            android:layout_width="84dp"
-            android:layout_height="84dp"
-            fresco:placeholderImage="@drawable/logo_your_daily"
+            android:layout_marginStart="0dp"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            fresco:placeholderImage="@drawable/blank_image_logo"
             fresco:actualImageScaleType="fitCenter"
-            android:id="@+id/profile_image"/>
+            android:id="@+id/profile_image" />
+
     </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friend"
+        android:layout_below="@+id/list_item"
+        android:layout_alignStart="@id/list_item"
+        android:layout_marginTop="16dp"
+        android:id="@+id/friend_name" />
 
 
 
