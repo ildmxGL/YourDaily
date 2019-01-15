@@ -27,11 +27,16 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView nickname;
     private List<String> friendEmails;
 
+    private ArrayList<DailyCard> myDailies;
     private ArrayList<Profile> currentProfiles;
     private Profile currentProfile;
 
     private FirebaseAuth mAuth;
     private ArrayList<String> keys;
+    private String mEmail;
+
+    private int postnum = 0;
+    private int writenum = 0;
 
 
     @Override
@@ -49,6 +54,8 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentProfiles = new ArrayList<Profile>();
         currentProfile = new Profile();
+        myDailies = new ArrayList<>();
+        mEmail = mAuth.getCurrentUser().getEmail();
 
         new FirebaseDatabaseProfile().readProfiles( new FirebaseDatabaseProfile.DataStatus() {
             @Override
@@ -65,9 +72,44 @@ public class ProfileActivity extends AppCompatActivity {
                 }
 
                 profileImage.setImageURI(Uri.parse(currentProfile.getProfileImage()));
-                posts.setText(String.valueOf(currentProfile.getPosts()));
-                writes.setText(String.valueOf(currentProfile.getPosts()));
+                //posts.setText(String.valueOf(currentProfile.getPosts()));
+                //writes.setText(String.valueOf(currentProfile.getPosts()));
                 nickname.setText(currentProfile.getNick());
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
+
+        new FirebaseDatabaseDailyCard().readBooks(new FirebaseDatabaseDailyCard.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<DailyCard> books, List<String> keys) {
+                myDailies = new ArrayList<>(books);
+
+                for (int i=0; i<myDailies.size(); i++){
+                    if(mEmail.equals(myDailies.get(i).getUserEmail())){
+                        postnum++;
+                    }
+                    if(mEmail.equals(myDailies.get(i).getWriterEmail())){
+                        writenum++;
+                    }
+                }
+
+                posts.setText(String.valueOf(postnum));
+                writes.setText(String.valueOf(writenum));
+
             }
 
             @Override
