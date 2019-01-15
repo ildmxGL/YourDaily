@@ -30,7 +30,7 @@ public class AddDailyActivity extends AppCompatActivity {
 
 //    private ImageButton addImageButton;
     private ArrayList<PreDaily> preDailies;
-//    private ArrayList<String> keys;
+   private ArrayList<String> keys;
 
     private GridView preDailyView;
     private GridView DailyView;
@@ -80,37 +80,37 @@ public class AddDailyActivity extends AppCompatActivity {
     }
 
     private void init() {
-        new FirebaseDatabasePreDaily().readPreDaily(mAuth.getCurrentUser().getEmail(), new FirebaseDatabasePreDaily.DataStatus() {
-            @Override
-            public void DataIsLoaded(List<PreDaily> books, List<String> keyss) {
-                Log.d(TAG, "DataIsLoaded: data Import");
-                preDailies = new ArrayList<PreDaily>(books);
-                Log.d(TAG, "DataIsLoaded: dailies recived : " + preDailies.get(0).getImageUri());
-                keys = new ArrayList<String>(keyss);
-
-                for (int i = 0; i < preDailies.size(); i++) {
-                    imgURLs.add(Uri.parse(preDailies.get(i).getImageUri()));
-                }
-
-                GridAdapter myAdapter = new GridAdapter(AddDailyActivity.this, imgURLs);
-                preDailyView.setAdapter(myAdapter);
-            }
-
-            @Override
-            public void DataIsInserted() {
-
-            }
-
-            @Override
-            public void DataIsUpdated() {
-
-            }
-
-            @Override
-            public void DataIsDeleted() {
-
-            }
-        });
+//        new FirebaseDatabasePreDaily().readPreDaily(mAuth.getCurrentUser().getEmail(), new FirebaseDatabasePreDaily.DataStatus() {
+//            @Override
+//            public void DataIsLoaded(List<PreDaily> books, List<String> keyss) {
+//                Log.d(TAG, "DataIsLoaded: data Import");
+//                preDailies = new ArrayList<PreDaily>(books);
+//                Log.d(TAG, "DataIsLoaded: dailies recived : " + preDailies.get(0).getImageUri());
+//                keys = new ArrayList<String>(keyss);
+//
+//                for (int i = 0; i < preDailies.size(); i++) {
+//                    imgURLs.add(Uri.parse(preDailies.get(i).getImageUri()));
+//                }
+//
+//                GridAdapter myAdapter = new GridAdapter(AddDailyActivity.this, imgURLs);
+//                preDailyView.setAdapter(myAdapter);
+//            }
+//
+//            @Override
+//            public void DataIsInserted() {
+//
+//            }
+//
+//            @Override
+//            public void DataIsUpdated() {
+//
+//            }
+//
+//            @Override
+//            public void DataIsDeleted() {
+//
+//            }
+//        });
     }
 
     // Adapter for the viewpager using FragmentPagerAdapter
