@@ -24,9 +24,9 @@ public class FriendCardAdapter extends BaseAdapter {
     private final Context mContext;
     private final ArrayList<FriendCard> FriendCards;
     SimpleDraweeView drawee;
-    ImageView card1;
-    ImageView card2;
-    ImageView card3;
+    SimpleDraweeView card1;
+    SimpleDraweeView card2;
+    SimpleDraweeView card3;
 
     public FriendCardAdapter(Context context, ArrayList<FriendCard> FriendCards){
         this.mContext = context;
@@ -60,19 +60,19 @@ public class FriendCardAdapter extends BaseAdapter {
         }
 
         drawee = (SimpleDraweeView) convertView.findViewById(R.id.profile_image);
-        card1 =  (ImageView) convertView.findViewById(R.id.drawee1);
-        card2 =  (ImageView) convertView.findViewById(R.id.drawee2);
-        card3 =  (ImageView) convertView.findViewById(R.id.drawee3);
+        card1 =  (SimpleDraweeView) convertView.findViewById(R.id.drawee1);
+        card2 =  (SimpleDraweeView) convertView.findViewById(R.id.drawee2);
+        card3 =  (SimpleDraweeView) convertView.findViewById(R.id.drawee3);
 
         drawee.setImageURI(Uri.parse(thisCard.getProfileUri()));
         if(!thisCard.getCard1Uri().isEmpty()){
             card1.setImageURI(Uri.parse(thisCard.getCard1Uri()));
         }
         if(!thisCard.getCard2Uri().isEmpty()){
-            card1.setImageURI(Uri.parse(thisCard.getCard2Uri()));
+            card2.setImageURI(Uri.parse(thisCard.getCard2Uri()));
         }
         if(!thisCard.getCard3Uri().isEmpty()){
-            card1.setImageURI(Uri.parse(thisCard.getCard3Uri()));
+            card3.setImageURI(Uri.parse(thisCard.getCard3Uri()));
         }
 
         return convertView;

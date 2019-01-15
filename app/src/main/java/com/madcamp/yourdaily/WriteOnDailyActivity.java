@@ -94,38 +94,47 @@ public class WriteOnDailyActivity extends AppCompatActivity {
                 new FirebaseDatabaseFriendCard().readFriendCards(new FirebaseDatabaseFriendCard.DataStatus() {
                     @Override
                     public void DataIsLoaded(List<FriendCard> friendCards, List<String> keys) {
+                        Log.d(TAG, "DataIsLoaded: Loop Point3");
                         for (int i=0; i<friendCards.size(); i++){
                             if(friendCards.get(i).getEmail().equals(mAuth.getCurrentUser().getEmail())){
                                 key = keys.get(i);
                                 mFriendCard = friendCards.get(i);
+                                if (mFriendCard.getCard1Uri().isEmpty()){
+                                    mFriendCard.setCard1Uri(mIntent.getStringExtra("ImageUri"));
+                                }else if (mFriendCard.getCard2Uri().isEmpty()){
+                                    mFriendCard.setCard2Uri(mIntent.getStringExtra("ImageUri"));
+                                }else if (mFriendCard.getCard3Uri().isEmpty()){
+                                    mFriendCard.setCard3Uri(mIntent.getStringExtra("ImageUri"));
+                                }
+
+                                Log.d(TAG, "DataIsLoaded: Loop Point 1");
+                                new FirebaseDatabaseFriendCard().updateFriendCard(key, mFriendCard, new FirebaseDatabaseFriendCard.DataStatus() {
+                                    @Override
+                                    public void DataIsLoaded(List<FriendCard> friendCards, List<String> keys) {
+
+                                    }
+
+                                    @Override
+                                    public void DataIsInserted() {
+
+                                    }
+
+                                    @Override
+                                    public void DataIsUpdated() {
+                                        Log.d(TAG, "DataIsUpdated: Loop point2");
+                                    }
+
+                                    @Override
+                                    public void DataIsDeleted() {
+
+                                    }
+                                });
                                 break;
                             }
                         }
 
-                        mFriendCard.setCard3Uri(mFriendCard.getCard2Uri());
-                        mFriendCard.setCard2Uri(mFriendCard.getCard1Uri());
-                        mFriendCard.setCard1Uri(mIntent.getStringExtra("ImageUri"));
-                        new FirebaseDatabaseFriendCard().updateFriendCard(key, mFriendCard, new FirebaseDatabaseFriendCard.DataStatus() {
-                            @Override
-                            public void DataIsLoaded(List<FriendCard> friendCards, List<String> keys) {
 
-                            }
 
-                            @Override
-                            public void DataIsInserted() {
-
-                            }
-
-                            @Override
-                            public void DataIsUpdated() {
-
-                            }
-
-                            @Override
-                            public void DataIsDeleted() {
-
-                            }
-                        });
                     }
 
                     @Override
