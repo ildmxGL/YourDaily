@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         setupBottomNavigationView();
         logoutImageView = (ImageView)findViewById(R.id.rocket_icon);
 
+        /*
         logoutImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+        */
         new FirebaseDatabaseDailyCard().readBooks( new FirebaseDatabaseDailyCard.DataStatus() {
             @Override
             public void DataIsLoaded(List<DailyCard> books, List<String> keyss) {

@@ -3,6 +3,7 @@ package com.madcamp.yourdaily;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,12 +28,14 @@ public class AddDailyActivity extends AppCompatActivity {
     private final int ACTIVITY_NUM = 1;
     private Context mContext = AddDailyActivity.this;
     private static final String TAG = "AddDailyActivity";
+    private FloatingActionButton addPreDailyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_daily);
 
+        addPreDailyButton = (FloatingActionButton)findViewById(R.id.add_daily_button);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -45,6 +48,15 @@ public class AddDailyActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
 
         setupBottomNavigationView();
+
+        addPreDailyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(AddDailyActivity.this, AddPreDaily.class);
+                startActivity(myIntent);
+            }
+        });
+
 
     }
 

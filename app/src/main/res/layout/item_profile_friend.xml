@@ -16,7 +16,7 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="70dp"
             android:layout_height="70dp"
-            fresco:placeholderImage="@drawable/profile_image_irene3"
+            fresco:placeholderImage="@drawable/logo_your_daily"
             fresco:actualImageScaleType="fitCenter"
             android:id="@+id/drawee1"
             android:padding="4dp"
@@ -29,7 +29,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:id="@+id/drawee2"
-            fresco:placeholderImage="@drawable/profile_image_irene2"
+            fresco:placeholderImage="@drawable/logo_your_daily"
             fresco:actualImageScaleType="fitCenter"
             android:padding="4dp"
             android:layout_marginStart="160dp"
@@ -39,7 +39,7 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="70dp"
             android:layout_height="70dp"
-            fresco:placeholderImage="@drawable/profile_image_irene1"
+            fresco:placeholderImage="@drawable/logo_your_daily"
             fresco:actualImageScaleType="fitCenter"
             android:id="@+id/drawee3"
             android:padding="4dp"
@@ -52,7 +52,8 @@
             android:layout_marginStart="40dp"
             android:layout_width="84dp"
             android:layout_height="84dp"
-            android:src="@drawable/profile_image_irene"
+            fresco:placeholderImage="@drawable/logo_your_daily"
+            fresco:actualImageScaleType="fitCenter"
             android:id="@+id/profile_image"/>
     </FrameLayout>
 
