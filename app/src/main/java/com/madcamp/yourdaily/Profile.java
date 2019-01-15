@@ -6,19 +6,15 @@ public class Profile {
     private String email;
     private List<String> friendEmails;
     private String nick;
-    private Long posts;
-    private Long writes;
     private String profileImage;
 
     public Profile() {
     }
 
-    public Profile(String email, List<String> friendEmails, String nick, Long posts, Long writes, String profileImage) {
+    public Profile(String email, List<String> friendEmails, String nick, String profileImage) {
         this.email = email;
         this.friendEmails = friendEmails;
         this.nick = nick;
-        this.posts = posts;
-        this.writes = writes;
         this.profileImage = profileImage;
     }
 
@@ -44,22 +40,6 @@ public class Profile {
 
     public void setNick(String nick) {
         this.nick = nick;
-    }
-
-    public Long getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Long posts) {
-        this.posts = posts;
-    }
-
-    public Long getWrites() {
-        return writes;
-    }
-
-    public void setWrites(Long writes) {
-        this.writes = writes;
     }
 
     public String getProfileImage() {

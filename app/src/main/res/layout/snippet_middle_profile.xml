@@ -57,8 +57,7 @@
                 android:textColor="#9e9b9b"
                 android:textSize="12sp"
                 android:layout_below="@id/tvPosts"
-                android:layout_alignLeft="@id/tvPosts"
-                android:layout_alignRight="@id/tvPosts"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="-8dp"
                 android:gravity="center"/>
         </RelativeLayout>
@@ -74,7 +73,8 @@
         <RelativeLayout
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp">
+            android:layout_marginEnd="16dp"
+            android:id="@+id/postRel">
 
             <TextView
                 android:id="@+id/tvWrites"
@@ -95,8 +95,7 @@
                 android:textColor="#9e9b9b"
                 android:textSize="12sp"
                 android:layout_below="@id/tvWrites"
-                android:layout_alignLeft="@id/tvWrites"
-                android:layout_alignRight="@id/tvWrites"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="-8dp"
                 android:gravity="center"/>
 

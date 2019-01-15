@@ -35,7 +35,5 @@ public class ViewPreDaily extends AppCompatActivity {
         mTitle.setText(thisIntent.getStringExtra("Title"));
         mContent.setText(thisIntent.getStringExtra("Hashtag"));
 
-
-
     }
 }
