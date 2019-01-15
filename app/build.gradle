@@ -76,6 +76,9 @@ dependencies {
     // For custom floating action button
     implementation 'com.getbase:floatingactionbutton:1.10.1'
 
+    // For lottie
+    implementation 'com.airbnb.android:lottie:2.3.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -46,7 +47,7 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
     private Button mSignIn_btn;
     private TextView mRegister_btn;
 
-    private ProgressBar mProgress_bar;
+//    private ProgressBar mProgress_bar;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -57,6 +58,8 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
     private static final int RC_SIGN_IN = 1000;
     private GoogleSignInButton Google_Login;
     private GoogleApiClient mGoogleApiClient;
+
+    private LottieAnimationView mlottie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +74,8 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
         mSignIn_btn = (Button)findViewById(R.id.signin_button);
         mRegister_btn = (TextView)findViewById(R.id.register_button);
 
-        mProgress_bar = (ProgressBar)findViewById(R.id.loading_progressBar);
+//        mProgress_bar = (ProgressBar)findViewById(R.id.loading_progressBar);
+        mlottie = (LottieAnimationView) findViewById(R.id.loading_progressBar);
 
         Google_Login = (GoogleSignInButton) findViewById(R.id.google_login);
 
@@ -122,7 +126,9 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
             }
         });
 
-        mProgress_bar.setVisibility(View.GONE);
+        mlottie.setVisibility(View.GONE);
+
+//        mProgress_bar.setVisibility(View.GONE);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -156,11 +162,17 @@ public class UserLoginActivity extends AppCompatActivity implements GoogleApiCli
 
     private void inProgress(boolean x){
         if (x){
-            mProgress_bar.setVisibility(View.VISIBLE);
+            mlottie.setVisibility(View.VISIBLE);
+            mlottie.playAnimation();
+            mlottie.loop(true);
+//            mProgress_bar.setVisibility(View.VISIBLE);
             mSignIn_btn.setEnabled(false);
             mRegister_btn.setEnabled(false);
         }else{
-            mProgress_bar.setVisibility(View.GONE);
+            mlottie.setVisibility(View.GONE);
+            mlottie.playAnimation();
+            mlottie.loop(false);
+//            mProgress_bar.setVisibility(View.GONE);
             mSignIn_btn.setEnabled(true);
             mRegister_btn.setEnabled(true);
         }
