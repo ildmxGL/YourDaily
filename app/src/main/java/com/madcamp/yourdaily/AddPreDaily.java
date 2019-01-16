@@ -106,6 +106,7 @@ public class AddPreDaily extends AppCompatActivity {
                 showPictureDialog();
             }
         });
+        UserNick = MainActivity.getUserNick();
 
         UploadButton.setOnClickListener(new View.OnClickListener() {
             @Override

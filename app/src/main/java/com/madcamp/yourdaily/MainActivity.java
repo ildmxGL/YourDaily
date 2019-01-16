@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private GridView gridView;
     private ImageView logoutImageView;
 
+    private static String UserNick = "";
+
     //For swipe view
     private float x1,x2;
     static final int MIN_DISTANCE = 150;
@@ -110,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
+
+
         new FirebaseDatabaseDailyCard().readBooks( new FirebaseDatabaseDailyCard.DataStatus() {
             @Override
             public void DataIsLoaded(List<DailyCard> books, List<String> keyss) {
@@ -171,6 +175,32 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); return;
         }
+        new FirebaseDatabaseProfile().readProfiles(new FirebaseDatabaseProfile.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Profile> profiles, List<String> keys) {
+                for (int i =0; i<profiles.size(); i++){
+                    if(mAuth.getCurrentUser().getEmail().equals(profiles.get(i).getEmail())){
+                        UserNick = profiles.get(i).getNick();
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -189,6 +219,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Show Logged in Email
         //testText.setText(mAuth.getCurrentUser().getEmail());
+    }
+
+    public static String getUserNick() {
+        return UserNick;
     }
 
     private void setupBottomNavigationView(){

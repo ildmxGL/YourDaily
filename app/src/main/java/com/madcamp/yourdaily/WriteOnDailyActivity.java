@@ -67,7 +67,7 @@ public class WriteOnDailyActivity extends AppCompatActivity {
                 daily.setUserEmail(mIntent.getStringExtra("UserEmail"));
                 daily.setUserNick(mIntent.getStringExtra("UserNick"));
                 daily.setWriterEmail(mAuth.getCurrentUser().getEmail());
-                daily.setWriterNick("");
+                daily.setWriterNick(MainActivity.getUserNick());
                 new FirebaseDatabaseDailyCard().addBook(daily, new FirebaseDatabaseDailyCard.DataStatus() {
                     @Override
                     public void DataIsLoaded(List<DailyCard> Dailies, List<String> keys) {
